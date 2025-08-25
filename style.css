@@ -1,0 +1,288 @@
+/*
+ * Natalia Tabja personal portfolio styling
+ *
+ * The look and feel of this portfolio draws inspiration from Natalia's
+ * vision board, featuring geometric minimalism and a dark, science‑infused
+ * palette. A dark base provides contrast for bright accent colours and
+ * crisp line art, while generous spacing and modern typography keep the
+ * experience elegant and readable. Cards, grids and charts are
+ * constructed with simple CSS so the site remains lightweight and easy
+ * to maintain.
+ */
+
+/* Colour variables for easy theming */
+:root {
+  --colour-bg: #0a0d14;               /* deep navy/black background */
+  --colour-card: #111824;             /* slightly lighter panel for cards */
+  --colour-accent: #1b9558;           /* neon green accent, inspired by the wireframe */
+  --colour-text: #e2e8f0;             /* light grey for primary text */
+  --colour-subtle: #8fa1b5;           /* muted grey for secondary text */
+  --colour-border: #1f2937;           /* subtle borders */
+  --max-width: 1100px;                /* central column width */
+  --transition-fast: 0.2s ease;       /* standard transition timing */
+  --radius: 8px;                      /* consistent border radius */
+  --shadow: 0 4px 12px rgba(0,0,0,0.35); /* soft drop shadow for floating elements */
+  font-size: 16px;
+}
+
+/* Global resets and typography */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--colour-text);
+  background-color: var(--colour-bg);
+  line-height: 1.6;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  color: var(--colour-text);
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+p {
+  margin: 0 0 1em;
+  color: var(--colour-subtle);
+}
+a {
+  color: var(--colour-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: #7af3aa;
+}
+
+/* Links that wrap an entire card should behave like a block and inherit
+ * card styling without adding underlines or affecting layout. The
+ * .card-link class is used by script.js when rendering course and
+ * project cards. */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Category tag for course detail pages */
+.category-tag {
+  font-style: italic;
+  color: var(--colour-subtle);
+  margin-bottom: 1rem;
+}
+
+/* Layout */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background-color: rgba(10, 13, 20, 0.6);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.logo .accent {
+  color: var(--colour-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  font-size: 0.95rem;
+  color: var(--colour-subtle);
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: var(--colour-accent);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--colour-text);
+}
+
+#gridCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 1rem;
+}
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--colour-subtle);
+}
+
+/* Section styling */
+.section {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+/* Grid layouts */
+.courses-grid,
+.projects-grid,
+.work-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsive grid columns */
+@media (min-width: 600px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .projects-grid,
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards */
+.card {
+  background-color: var(--colour-card);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+}
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+.card p {
+  font-size: 0.9rem;
+}
+.card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+.tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius);
+  background-color: rgba(0, 210, 106, 0.15);
+  color: var(--colour-accent);
+}
+
+/* Chart area */
+#courseChart {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  display: block;
+  overflow: visible;
+}
+svg text {
+  fill: var(--colour-subtle);
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+svg .bar {
+  fill: var(--colour-accent);
+  transition: fill var(--transition-fast);
+}
+svg .bar:hover {
+  fill: #7af3aa;
+}
+svg .axis path,
+svg .axis line {
+  stroke: var(--colour-border);
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: var(--colour-bg);
+  color: var(--colour-subtle);
+  font-size: 0.8rem;
+}
+
+/* Contact form or details can be styled here later */
