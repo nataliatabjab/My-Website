@@ -322,7 +322,6 @@ svg .tick text{fill:var(--muted)}
   color: var(--colour-subtle);
 }
 
-
 /* Make links inside cards inherit the section’s title colour when
    they’re used as block titles */
 .card .card-title a { color: inherit; text-decoration: none; }
@@ -334,4 +333,86 @@ svg .tick text{fill:var(--muted)}
 #work .card,
 #research .card {
   background: var(--colour-card);
+}
+
+/* ===== Project page helpers (Virtual Fitness Assistant) ===== */
+
+.project-title {
+  margin-bottom: 0.5rem;
+}
+
+.project-subtitle {
+  font-size: 1.1rem;
+  color: var(--colour-subtle);
+  max-width: 70ch;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+
+/* Buttons (colors match your Projects section = teal) */
+.button {
+  display: inline-block;
+  padding: 0.6rem 0.95rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  border: 1px solid var(--colour-border);
+}
+
+.button--primary {
+  background: #2A8A8B;      /* teal accent */
+  color: #fff;
+  border-color: #2A8A8B;
+}
+.button--primary:hover { background: #1e6f70; transform: translateY(-1px); }
+
+.button--ghost {
+  background: transparent;
+  color: #2A8A8B;
+}
+.button--ghost:hover { background: rgba(42,138,139,0.08); }
+
+/* Blocks + lists */
+.project-block { margin: 2rem 0; }
+.feature-list { padding-left: 1.2rem; }
+.feature-list li { margin: 0.35rem 0; }
+
+/* Responsive video wrapper */
+.video-frame {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  background: var(--colour-card);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.video-frame > video { width: 100%; height: 100%; display: block; }
+
+.hint { color: var(--colour-subtle); font-size: 0.95rem; }
+
+/* Two-column meta area that collapses nicely */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 900px) { .meta-grid { grid-template-columns: 1fr; } }
+
+/* Simple gallery (optional) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+.gallery img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--colour-border);
+  box-shadow: var(--shadow);
 }

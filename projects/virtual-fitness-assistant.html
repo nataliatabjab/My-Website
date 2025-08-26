@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Fitness Assistant (MARVN) – Natalia Tabja</title>
+
+  <!-- Reuse your site styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style_multi_light.css" />
+
+  <!-- Optional: local fonts already imported by your CSS -->
+</head>
+<body>
+  <!-- Simple top bar (matches your detail pages) -->
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="section" style="padding-top: 7rem;">
+    <div class="container">
+      <h2 class="project-title">Virtual Fitness Assistant (MARVN)</h2>
+      <p class="project-subtitle">
+        A Java-based application that tracks macro and micro nutrients,
+        evaluates the nutritional content of recipes, and suggests meals
+        based on dietary restrictions and fitness goals. Built with clean
+        architecture and SOLID principles; integrates the Edamam Nutrition API.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="project-actions">
+        <a class="button button--primary"
+           href="https://github.com/alessiacodes/MARVN-Your-Virtual-Fitness-Assistant"
+           target="_blank" rel="noopener">View Repository</a>
+        <a class="button button--ghost" href="../index.html#projects">Back to Projects</a>
+      </div>
+
+      <!-- Video demo -->
+      <section class="project-block">
+        <h3>Demo</h3>
+        <div class="video-frame">
+          <!-- Put the file at ../videos/marvin-demo.mp4 -->
+          <video controls preload="metadata"
+                 src="../videos/marvin-demo.mp4"
+                 poster="../images/projects/marvn_poster.jpg"></video>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="project-block">
+        <h3>Key Features</h3>
+        <ul class="feature-list">
+          <li>Track daily macro and micro nutrient intake.</li>
+          <li>Look up nutrition facts for arbitrary recipes/ingredients.</li>
+          <li>Get suggested meals tailored to dietary restrictions and goals.</li>
+          <li>Java desktop app with clear separation of concerns (clean architecture, SOLID).</li>
+          <li>Edamam Nutrition API integration for reliable food data.</li>
+        </ul>
+      </section>
+
+      <!-- Tech / Role -->
+      <section class="project-block">
+        <div class="meta-grid">
+          <div>
+            <h4>Tech Stack</h4>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">Swing / Desktop</span>
+              <span class="tag">HTTP/JSON</span>
+              <span class="tag">Edamam API</span>
+              <span class="tag">JUnit</span>
+            </div>
+          </div>
+          <div>
+            <h4>My Contributions</h4>
+            <ul class="feature-list">
+              <li>Designed core data model and validation pipeline.</li>
+              <li>Implemented API client and response parsers.</li>
+              <li>Wired UI flows and nutrient summaries.</li>
+              <li>Wrote unit tests and code cleanup for SOLID adherence.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- (Optional) Screenshots gallery; drop images in ../images/projects/marvn/ -->
+      <!--
+      <section class="project-block">
+        <h3>Screens</h3>
+        <div class="gallery">
+          <img src="../images/projects/marvn/screen1.jpg" alt="Login screen"/>
+          <img src="../images/projects/marvn/screen2.jpg" alt="Nutrition lookup"/>
+          <img src="../images/projects/marvn/screen3.jpg" alt="Meal suggestions"/>
+        </div>
+      </section>
+      -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div>
+  </footer>
+</body>
+</html>

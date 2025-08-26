@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
       link: 'projects/csc311-ml-project.html'
     },
     {
+      title: 'Virtual Fitness Assistant',
+      description: 'A Java-based program that tracks macro/micro nutrients, evaluates recipes and suggests meals based on dietary and fitness goals.',
+      tags: ['Java', 'Nutrition', 'API'],
+      image: null
+    },
+    {
       title: 'Quantum Mechanics Simulator',
       description: 'An educational tool simulating 1D quantum wave functions in potential wells. Visualises probability distributions and energy levels.',
       tags: ['Physics', 'Numerical Methods'],
