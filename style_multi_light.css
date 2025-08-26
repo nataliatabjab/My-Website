@@ -1,418 +1,217 @@
-/* ============================================
-   Multicolour Light Theme (section-anchored)
+/* ==========================================================================
+   Multicolour Light Theme (SECTION-COLOURED)
    Natalia Tabja — Courses=Teal, Work=Olive, Research=Gold, Projects=Red
    Fonts: Space Mono (headings), Work Sans (body)
-   ============================================ */
+   Contents (in page order):
+   1) Fonts & Root Variables
+   2) Global Colour Wiring
+   3) Section Headings (left bar + colour)
+   4) Section Card Colours + Hovers
+   5) D3/Chart Colours
+   6) Mesh Grid Stroke (read from JS)
+   7) Research (preview on index + detail page)
+   8) Projects Detail Helpers (e.g., Virtual Fitness Assistant)
+   9) Creative Gallery (card grid like projects)
+   ========================================================================== */
 
-/* Base (keep your layout/spacing from style.css) */
+/* ===== 1) FONTS & ROOT VARIABLES ======================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap');
 
-/* Override base theme variables expected by style.css */
+/* Core UI tokens used by base file */
 :root{
-  --colour-bg: #ffffff;        /* light background */
-  --colour-card: #f7f8f9;      /* card bg */
-  --colour-accent: #2a8a8b;    /* primary accent (teal) */
-  --colour-text: #273036;      /* main text */
-  --colour-subtle: #5c6a72;    /* secondary text */
-  --colour-border: #e3e7ea;    /* borders */
-}
-
-/* -------- Variables -------- */
-:root{
-  /* Core UI */
-  --bg: #ffffff;
-  --card: #f7f8f9;
-  --text: #273036;
-  --muted: #5c6a72;
-  --border: #e3e7ea;
+  /* Neutral UI */
+  --colour-bg:     #ffffff;
+  --colour-card:   #f7f8f9;
+  --colour-text:   #273036;
+  --colour-subtle: #5c6a72;
+  --colour-border: #e3e7ea;
   --radius: 10px;
   --shadow: 0 6px 18px rgba(0,0,0,.06);
 
-  /* Palette (from your swatches) */
-  --olive: #7b8242;
-  --gold:  #e3c22a;
-  --red:   #cf4e47;
-  --teal:  #2a8a8b;
+  /* Palette anchors (from your swatches) */
+  --olive: #7b8242;   /* Work */
+  --gold:  #e3c22a;   /* Research */
+  --red:   #cf4e47;   /* Projects */
+  --teal:  #2a8a8b;   /* Coursework */
 
-  /* Helpful tints/shades */
+  /* Helpful shades/tints */
   --olive-100: #e8ecd8;
   --olive-300: #94a05a;
   --teal-700:  #1f6e70;
   --gold-100:  #fff7d6;
   --red-600:   #b33f3a;
 
-  /* Mesh grid (read by JS) */
+  /* Default link accent */
+  --colour-accent:        var(--teal);
+  --colour-accent-hover:  var(--teal-700);
+
+  /* Mesh line colour (used by canvas script) */
   --mesh-color: var(--olive-300);
 }
 
-/* -------- Minimal baseline (in case base CSS hasn’t loaded) -------- */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Work Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-h1,h2,h3,h4{font-family:'Space Mono',monospace;color:var(--text);letter-spacing:.2px;margin:0 0 .6rem}
-a{color:var(--teal);text-decoration:none}
-a:hover{color:var(--teal-700)}
-.container{max-width:1100px;margin:0 auto;padding:0 1rem}
-section{padding:2.25rem 0;border-bottom:1px solid var(--border)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem}
-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.25rem;align-items:center}
-nav a{font-weight:600}
+/* ===== 2) GLOBAL COLOUR WIRING (small polish) ========================== */
 
-/* -------- Global polish -------- */
-p{color:var(--muted)}
-hr{border:0;border-top:1px solid var(--border)}
-mark{background:var(--gold-100);padding:.1rem .25rem;border-radius:4px}
-.tag{display:inline-block;padding:.25rem .5rem;border-radius:999px;font-weight:600;font-size:.8rem}
+mark { background: var(--gold-100); padding: .1rem .25rem; border-radius: 4px; }
 
-/* Buttons */
-.button,.btn{
-  display:inline-block;background:var(--teal);color:#fff;padding:.6rem 1rem;
-  border-radius:10px;border:1px solid transparent;transition:.15s ease
-}
-.button:hover{background:var(--gold);color:#2e2e2e}
+/* ===== 3) SECTION HEADINGS (left accent bar + colour) ================== */
 
-/* Navbar */
-.navbar{
-  position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--border)
-}
-.navbar a{color:var(--teal)}
-.navbar a:hover{color:var(--gold)}
+#coursework h2 { border-left: 6px solid var(--teal);  padding-left: .75rem; color: var(--teal); }
+#work       h2 { border-left: 6px solid var(--olive); padding-left: .75rem; color: var(--olive); }
+#research   h2 { border-left: 6px solid var(--gold);  padding-left: .75rem; color: var(--gold); }
+#projects   h2 { border-left: 6px solid var(--red);   padding-left: .75rem; color: var(--red); }
 
-/* Section headings (anchored accents) */
-#coursework h2{border-left:6px solid var(--teal);padding-left:.75rem;color:var(--teal)}
-#work h2{border-left:6px solid var(--olive);padding-left:.75rem;color:var(--olive)}
-#research h2{border-left:6px solid var(--gold);padding-left:.75rem;color:var(--gold)}
-#projects h2{border-left:6px solid var(--red);padding-left:.75rem;color:var(--red)}
+/* ===== 4) SECTION CARD COLOURS + MATCHED HOVERS ======================== */
 
-/* Cards by section */
-#coursework .card{border-color:rgba(42,138,139,.35)}
-#coursework .tag{background:rgba(42,138,139,.12);color:var(--teal);border:1px solid rgba(42,138,139,.25)}
-
-#work .card{border-color:rgba(123,130,66,.35)}
-#work .tag{background:var(--olive-100);color:var(--olive);border:1px solid rgba(123,130,66,.25)}
-
-#research .card{border-color:rgba(227,194,42,.35)}
-#research .tag{background:var(--gold-100);color:var(--gold);border:1px solid rgba(227,194,42,.35)}
-
-#projects .card{border-color:rgba(207,78,71,.35)}
-#projects .tag{background:rgba(207,78,71,.12);color:var(--red);border:1px solid rgba(207,78,71,.3)}
-
-/* Hover rim matches section colour */
-#coursework .card:hover{border-color:rgba(42,138,139,.55)}
-#work .card:hover{border-color:rgba(123,130,66,.55)}
-#research .card:hover{border-color:rgba(227,194,42,.55)}
-#projects .card:hover{border-color:rgba(207,78,71,.55)}
-
-/* Chart colours (D3/SVG bars) */
-#coursework svg .bar{fill:var(--teal)}
-#work      svg .bar{fill:var(--olive)}
-#research  svg .bar{fill:var(--gold)}
-#projects  svg .bar{fill:var(--red)}
-svg .bar:hover{opacity:.9}
-svg .axis path, svg .axis line{stroke:#cfd6da;opacity:.8}
-svg .tick text{fill:var(--muted)}
-
-/* Mesh grid lines pull from CSS var (see script.js) */
-.mesh line, .mesh path { stroke: var(--mesh-color) }
-
-/* Footer */
-.footer{background:var(--card);color:var(--muted);border-top:1px solid var(--border)}
-
-/* Responsive embeds */
-.embed-grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-@media (min-width: 900px){
-  .embed-grid{ grid-template-columns: 1fr 1fr; }
-}
-.embed{
-  background: var(--colour-card, #f7f8f9);
-  border: 1px solid var(--colour-border, #e3e7ea);
-  border-radius: 12px;
-  box-shadow: var(--shadow, 0 6px 18px rgba(0,0,0,.06));
-  padding: .75rem;
-}
-.embed iframe{
-  width: 100%;
-  aspect-ratio: 16/10; /* adjust if your charts are taller */
-  border: 0;
-  border-radius: 8px;
-  background: #fff;
-}
-.embed figcaption{
-  margin-top: .5rem;
-  font-size: .9rem;
-  color: var(--colour-subtle, #5c6a72);
-}
-
-/* Research section tweaks */
-.research-card {
-  border-left: 4px solid #D4AF37; /* gold instead of teal */
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 6px;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow);
-}
-
-.research-card h3 {
-  color: #000000; /* black title */
-  margin-bottom: 0.5rem;
-}
-
-.research-card h3 a {
-  color: #000000; /* clickable link black */
-  text-decoration: none;
-}
-
-.research-card h3 a:hover {
-  color: #D4AF37; /* gold on hover for a subtle effect */
-}
-
-.research-card h4 {
-  color: #D4AF37; /* gold for subheadings like Motivation/Plan */
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Research preview card on index.html */
-#research .card h3 a {
-  color: #000000 !important;   /* black */
-  text-decoration: none;
-}
-
-#research .card h3 a:hover {
-  color: #D4AF37 !important;   /* gold hover */
-}
-
-/* ========= Section-colour hovers (robust) ========= */
-/* Teal for Coursework */
-#coursework .card{
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
+/* Coursework (teal) */
+#coursework .card{ border-color: rgba(42,138,139,.35); }
+#coursework .tag { background: rgba(42,138,139,.12); color: var(--teal); border: 1px solid rgba(42,138,139,.25); }
 #coursework .card:hover{
   border-color: rgba(42,138,139,.55);
   box-shadow: 0 10px 24px rgba(42,138,139,.15);
   transform: translateY(-1px);
 }
 #coursework .card:hover :is(h2,h3,h4),
-#coursework .card:hover :is(h2,h3,h4) a{
-  color:#2A8A8B !important;
-  text-decoration: none;
-}
+#coursework .card:hover :is(h2,h3,h4) a{ color: var(--teal) !important; }
 
-/* Red for Projects */
-#projects .card{
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
-#projects .card:hover{
-  border-color: rgba(207,78,71,.55);
-  box-shadow: 0 10px 24px rgba(207,78,71,.15);
-  transform: translateY(-1px);
-}
-#projects .card:hover :is(h2,h3,h4),
-#projects .card:hover :is(h2,h3,h4) a{
-  color:#CF4E47 !important;
-  text-decoration: none;
-}
-
-/* Green for Work history */
-#work .card{
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
+/* Work History (olive) */
+#work .card{ border-color: rgba(123,130,66,.35); }
+#work .tag { background: var(--olive-100); color: var(--olive); border: 1px solid rgba(123,130,66,.25); }
 #work .card:hover{
-  border-color: rgba(70,98,69,.55);
+  border-color: rgba(123,130,66,.55);
   box-shadow: 0 10px 24px rgba(70,98,69,.15);
   transform: translateY(-1px);
 }
 #work .card:hover :is(h2,h3,h4),
-#work .card:hover :is(h2,h3,h4) a{
-  color:#466245 !important;
-  text-decoration: none;
-}
+#work .card:hover :is(h2,h3,h4) a{ color: #466245 !important; }
 
-/* Gold for Research (preview on index) */
-#research .card{
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
+/* Research (gold) */
+#research .card{ border-color: rgba(227,194,42,.35); }
+#research .tag { background: var(--gold-100); color: var(--gold); border: 1px solid rgba(227,194,42,.35); }
 #research .card:hover{
   border-color: rgba(212,175,55,.55);
   box-shadow: 0 10px 24px rgba(212,175,55,.15);
   transform: translateY(-1px);
 }
 #research .card:hover :is(h2,h3,h4),
-#research .card:hover :is(h2,h3,h4) a{
-  color:#D4AF37 !important;
-  text-decoration: none;
+#research .card:hover :is(h2,h3,h4) a{ color: #D4AF37 !important; }
+
+/* Projects (red) */
+#projects .card{ border-color: rgba(207,78,71,.35); }
+#projects .tag { background: rgba(207,78,71,.12); color: var(--red); border: 1px solid rgba(207,78,71,.3); }
+#projects .card:hover{
+  border-color: rgba(207,78,71,.55);
+  box-shadow: 0 10px 24px rgba(207,78,71,.15);
+  transform: translateY(-1px);
 }
+#projects .card:hover :is(h2,h3,h4),
+#projects .card:hover :is(h2,h3,h4) a{ color: #CF4E47 !important; }
 
-/* ---- Section base colours (not just on hover) ---- */
+/* ===== 5) D3 / SVG CHART COLOURS ======================================= */
 
-/* Projects = red */
-#projects h2.section-title { color: var(--red-600); }
-#projects .card { border-color: var(--red-200); }
-#projects .card-title { color: var(--red-700); }
-#projects a { color: var(--red-600); }
-#projects a:hover { color: var(--red-700); }
+#coursework svg .bar{ fill: var(--teal);  }
+#work       svg .bar{ fill: var(--olive); }
+#research   svg .bar{ fill: var(--gold);  }
+#projects   svg .bar{ fill: var(--red);   }
+svg .bar:hover{ opacity: .9; }
+svg .axis path, svg .axis line{ stroke: #cfd6da; opacity: .8; }
+svg .tick text{ fill: var(--colour-subtle); }
 
-/* Coursework = teal */
-#coursework h2.section-title { color: var(--teal-700); }
-#coursework .card { border-color: var(--teal-200); }
-#coursework .card-title { color: var(--teal-800); }
-#coursework a { color: var(--teal-700); }
-#coursework a:hover { color: var(--teal-900); }
+/* ===== 6) MESH GRID STROKE ============================================= */
 
-/* Work = olive/green */
-#work h2.section-title { color: var(--green-700); }
-#work .card { border-color: var(--green-200); }
-#work .card-title { color: var(--green-800); }
-#work a { color: var(--green-700); }
-#work a:hover { color: var(--green-900); }
+.mesh line, .mesh path { stroke: var(--mesh-color); }
 
-/* Research = gold */
-#research h2.section-title { color: var(--gold-600); }
-#research .card { border-color: var(--gold-200); }
-#research .card-title { color: var(--gold-700); }
-#research a { color: var(--gold-700); }
-#research a:hover { color: var(--gold-800); }
+/* ===== 7) RESEARCH (preview + detail page styling) ===================== */
 
-/* Creative section — gold accent, clean gallery */
+/* Preview card link on index: black title, gold hover */
+#research .card h3 a{ color: #000 !important; text-decoration: none; }
+#research .card h3 a:hover{ color: #D4AF37 !important; }
+
+/* Standalone research detail page card */
+.research-card{
+  border-left: 4px solid #D4AF37;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+.research-card h3{ color: #000; margin-bottom: .5rem; }
+.research-card h3 a{ color: #000; text-decoration: none; }
+.research-card h3 a:hover{ color: #D4AF37; }
+.research-card h4{ color: #D4AF37; margin: 1.2rem 0 .5rem; }
+
+/* ===== 8) PROJECT DETAIL HELPERS (e.g., Virtual Fitness Assistant) ===== */
+
+.project-title { margin-bottom: .5rem; }
+.project-subtitle { font-size: 1.1rem; color: var(--colour-subtle); max-width: 70ch; }
+.project-actions { display: flex; gap: .75rem; margin: 1rem 0 1.5rem; }
+
+/* Buttons tuned to teal by default (projects often link out) */
+.button--primary { background: var(--teal); color: #fff; border: 1px solid var(--teal); }
+.button--primary:hover { background: var(--teal-700); transform: translateY(-1px); }
+.button--ghost { background: transparent; color: var(--teal); border-color: var(--colour-border); }
+.button--ghost:hover { background: rgba(42,138,139,0.08); }
+
+/* Video wrapper for responsive demos */
+.video-frame{
+  width: 100%; max-width: 960px; aspect-ratio: 16/9;
+  background: var(--colour-card); border: 1px solid var(--colour-border);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+}
+.video-frame > video { width: 100%; height: 100%; display: block; }
+.hint { color: var(--colour-subtle); font-size: .95rem; }
+
+/* Meta grid pairs (e.g., tech stack / links) */
+.meta-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media (max-width: 900px){ .meta-grid{ grid-template-columns: 1fr; } }
+
+/* Optional thumbnail gallery inside project pages */
+.gallery{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; }
+.gallery img{ width: 100%; border-radius: var(--radius); border: 1px solid var(--colour-border); box-shadow: var(--shadow); }
+
+/* ===== 9) CREATIVE GALLERY (card grid like projects) =================== */
+
 #creative h2{
   border-left: 6px solid var(--gold);
   padding-left: .75rem;
   color: var(--gold);
 }
 
+/* 2–4 columns depending on width */
 .gallery-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
 }
 
+/* Card container */
 .gallery-item{
-  background: var(--colour-card);
-  border: 1px solid var(--colour-border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  padding: .6rem;
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
-
-.gallery-item:hover{
-  border-color: rgba(227,194,42,.55);            /* gold rim */
-  box-shadow: 0 10px 24px rgba(227,194,42,.15);
-  transform: translateY(-1px);
-}
-
-.gallery-item img{
-  width: 100%;
-  height: auto;
   display: block;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.gallery-item figcaption{
-  margin-top: .5rem;
-  font-size: .9rem;
-  color: var(--colour-subtle);
-}
-
-/* Make links inside cards inherit the section’s title colour when
-   they’re used as block titles */
-.card .card-title a { color: inherit; text-decoration: none; }
-.card .card-title a:hover { text-decoration: underline; }
-
-/* Softer default card bg to make borders read better */
-#projects .card,
-#coursework .card,
-#work .card,
-#research .card {
-  background: var(--colour-card);
-}
-
-/* ===== Project page helpers (Virtual Fitness Assistant) ===== */
-
-.project-title {
-  margin-bottom: 0.5rem;
-}
-
-.project-subtitle {
-  font-size: 1.1rem;
-  color: var(--colour-subtle);
-  max-width: 70ch;
-}
-
-.project-actions {
-  display: flex;
-  gap: 0.75rem;
-  margin: 1rem 0 1.5rem;
-}
-
-/* Buttons (colors match your Projects section = teal) */
-.button {
-  display: inline-block;
-  padding: 0.6rem 0.95rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
-  border: 1px solid var(--colour-border);
-}
-
-.button--primary {
-  background: #2A8A8B;      /* teal accent */
-  color: #fff;
-  border-color: #2A8A8B;
-}
-.button--primary:hover { background: #1e6f70; transform: translateY(-1px); }
-
-.button--ghost {
-  background: transparent;
-  color: #2A8A8B;
-}
-.button--ghost:hover { background: rgba(42,138,139,0.08); }
-
-/* Blocks + lists */
-.project-block { margin: 2rem 0; }
-.feature-list { padding-left: 1.2rem; }
-.feature-list li { margin: 0.35rem 0; }
-
-/* Responsive video wrapper */
-.video-frame {
-  width: 100%;
-  max-width: 960px;
-  aspect-ratio: 16 / 9;
   background: var(--colour-card);
   border: 1px solid var(--colour-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
 }
-.video-frame > video { width: 100%; height: 100%; display: block; }
 
-.hint { color: var(--colour-subtle); font-size: 0.95rem; }
+/* Gold hover that matches the Research/Creative accent */
+.gallery-item:hover{
+  border-color: rgba(227,194,42,.55);
+  box-shadow: 0 10px 24px rgba(227,194,42,.15);
+  transform: translateY(-1px);
+}
 
-/* Two-column meta area that collapses nicely */
-.meta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+/* Fixed-height thumbnail for consistent rows */
+.gallery-item .thumb{ height: 180px; background: #fff; }
+.gallery-item img{
+  width: 100%; height: 100%; display: block; object-fit: cover;
 }
-@media (max-width: 900px) { .meta-grid { grid-template-columns: 1fr; } }
 
-/* Simple gallery (optional) */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.8rem;
-}
-.gallery img {
-  width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid var(--colour-border);
-  box-shadow: var(--shadow);
-}
+/* Title + caption area */
+.gallery-item .meta{ padding: .75rem .9rem; }
+.gallery-item .meta h3{ margin: 0 0 .2rem; font-size: 1.05rem; }
+.gallery-item .meta p{ margin: 0; color: var(--colour-subtle); font-size: .9rem; }
