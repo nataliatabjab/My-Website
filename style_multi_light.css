@@ -148,3 +148,104 @@ svg .tick text{fill:var(--muted)}
   font-size: .9rem;
   color: var(--colour-subtle, #5c6a72);
 }
+
+/* Research section tweaks */
+.research-card {
+  border-left: 4px solid #D4AF37; /* gold instead of teal */
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.research-card h3 {
+  color: #000000; /* black title */
+  margin-bottom: 0.5rem;
+}
+
+.research-card h3 a {
+  color: #000000; /* clickable link black */
+  text-decoration: none;
+}
+
+.research-card h3 a:hover {
+  color: #D4AF37; /* gold on hover for a subtle effect */
+}
+
+.research-card h4 {
+  color: #D4AF37; /* gold for subheadings like Motivation/Plan */
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Research preview card on index.html */
+#research .card h3 a {
+  color: #000000 !important;   /* black */
+  text-decoration: none;
+}
+
+#research .card h3 a:hover {
+  color: #D4AF37 !important;   /* gold hover */
+}
+
+/* ========= Section-colour hovers (robust) ========= */
+/* Teal for Coursework */
+#coursework .card{
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+#coursework .card:hover{
+  border-color: rgba(42,138,139,.55);
+  box-shadow: 0 10px 24px rgba(42,138,139,.15);
+  transform: translateY(-1px);
+}
+#coursework .card:hover :is(h2,h3,h4),
+#coursework .card:hover :is(h2,h3,h4) a{
+  color:#2A8A8B !important;
+  text-decoration: none;
+}
+
+/* Red for Projects */
+#projects .card{
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+#projects .card:hover{
+  border-color: rgba(207,78,71,.55);
+  box-shadow: 0 10px 24px rgba(207,78,71,.15);
+  transform: translateY(-1px);
+}
+#projects .card:hover :is(h2,h3,h4),
+#projects .card:hover :is(h2,h3,h4) a{
+  color:#CF4E47 !important;
+  text-decoration: none;
+}
+
+/* Green for Work history */
+#work .card{
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+#work .card:hover{
+  border-color: rgba(70,98,69,.55);
+  box-shadow: 0 10px 24px rgba(70,98,69,.15);
+  transform: translateY(-1px);
+}
+#work .card:hover :is(h2,h3,h4),
+#work .card:hover :is(h2,h3,h4) a{
+  color:#466245 !important;
+  text-decoration: none;
+}
+
+/* Gold for Research (preview on index) */
+#research .card{
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+#research .card:hover{
+  border-color: rgba(212,175,55,.55);
+  box-shadow: 0 10px 24px rgba(212,175,55,.15);
+  transform: translateY(-1px);
+}
+#research .card:hover :is(h2,h3,h4),
+#research .card:hover :is(h2,h3,h4) a{
+  color:#D4AF37 !important;
+  text-decoration: none;
+}
