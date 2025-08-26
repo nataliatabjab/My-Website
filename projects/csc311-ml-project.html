@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predicting Student Performance with ML – Natalia Tabja</title>
+  <!-- Link the base and theme stylesheets.  The theme should be loaded
+       after the base CSS so that it can override the dark palette. -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style_multi_light.css">
+</head>
+<body>
+  <!-- Primary navigation bar reused from the main site -->
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section research-section" style="padding-top:7rem;">
+    <div class="container">
+      <h2>Predicting Student Performance with ML</h2>
+      <p class="meta">Natalia Tabja • 2025</p>
+      <h3>Project Overview</h3>
+      <p>
+        This project investigates various approaches to predicting student responses to multiple‑choice questions.  We implement and compare
+        <em>k</em>-nearest neighbours (kNN) collaborative filtering, Item Response Theory (IRT), a neural network autoencoder, and an ensemble of models using real‑world educational data from the Eedi platform.
+      </p>
+
+      <h3>Methods</h3>
+      <p>
+        Our goal was to model how students answer questions with heterogeneous difficulty and discrimination.  We first reduce high‑dimensional
+        item metadata using principal component analysis (PCA) and perform <em>k</em>-means clustering on the low‑dimensional representations.  Each
+        cluster mean then defines a Gaussian prior over the item parameters in the two‑parameter logistic (2PL) IRT model.  We also train a
+        collaborative filtering model (kNN) that relies on similarity of student response patterns, and a neural network autoencoder that learns
+        latent factors describing both learners and items.  Finally, we build a simple ensemble by averaging the predicted probabilities from
+        the individual models to improve performance on held‑out data.
+      </p>
+
+      <h3>Model Schematic</h3>
+      <p>
+        The figure below summarises our revised IRT pipeline.  The high‑dimensional item metadata <span style="font-style:italic;">x</span><sub>j</sub> is projected into a lower‑dimensional
+        space via PCA (<strong>1–2</strong>).  We then cluster the embeddings using <em>k</em>-means (<strong>3</strong>) and use each cluster mean to define Gaussian priors for the item
+        parameters (<strong>4</strong>).  These priors guide training of a 2PL IRT model (<strong>5</strong>) which is used to compute a matrix of predicted probabilities <span
+        style="font-style:italic;">p</span><sub>ij</sub> for all student–item pairs (<strong>6</strong>).
+      </p>
+      <figure class="embed">
+        <img src="../images/schematic.png" alt="Schematic overview of the revised IRT pipeline showing PCA, k-means clustering and Gaussian priors" style="width:100%; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>
+          <strong>Figure.</strong> Schematic overview of the model pipeline. High‑dimensional item metadata is reduced using PCA (1–2), clustered via <em>k</em>-means (3), and used to define Gaussian priors over item parameters (4). These priors guide training of a 2PL IRT model using the response matrix C = {c<sub>ij</sub>} (5), which outputs predicted probabilities <span style="font-style:italic;">p</span><sub>ij</sub> (6).
+        </figcaption>
+      </figure>
+
+      <h3>Additional Resources</h3>
+      <p>
+        You can explore the full source code and detailed report in the project's repository on
+        <a href="https://github.com/nataliatabjab/CSC311-ML-Project" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </div>
+  </section>
+  
+  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+</body>
+</html>

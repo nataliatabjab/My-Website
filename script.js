@@ -45,33 +45,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projects = [
     {
-      title: 'Oura Ring ML Analysis',
+      title: 'Machine Learning for Stress Prediction Using Oura Ring Data',
       description: 'A machine learning project exploring sleep and activity data collected from an Oura ring to predict daily readiness and identify patterns.',
       tags: ['Machine Learning', 'Python', 'Pandas'],
-      // Use locally stored decorative wireframe image as a cover
+      link: 'projects/oura-ring-ml-analysis.html',
       image: null
     },
     {
-      title: 'Interactive Spirograph Visualiser',
-      description: 'A D3.js experiment that generates spirograph patterns based on user input. Explore mathematics through artful curves.',
-      tags: ['JavaScript', 'D3', 'SVG'],
-      image: null
+      title: 'Predicting Student Performance with Machine Learning',
+      description: 'This project explores predicting student responses...',
+      tags: ['Machine Learning', 'kNN', 'IRT', 'Autoencoders'],
+      link: 'projects/csc311-ml-project.html'
     },
     {
       title: 'Quantum Mechanics Simulator',
       description: 'An educational tool simulating 1D quantum wave functions in potential wells. Visualises probability distributions and energy levels.',
       tags: ['Physics', 'Numerical Methods'],
+      link: 'projects/quantum-mechanics-simulator.html',
       image: null
     }
   ];
 
+
   const workHistory = [
     {
       role: 'Scientific Programmer',
-      company: 'Data Insights Lab',
-      period: '2024 – Present',
+      company: 'Environment Canada',
+      period: 'June 2023 – December 2024',
       description: 'Developed data pipelines and visual analytics tools for research projects spanning physics and biology. Collaborated with researchers to transform raw data into actionable insights.',
-      tags: ['Python', 'Data Visualisation']
+      tags: ['Python', 'Java', 'C++']
     },
     {
       role: 'Teaching Assistant',
@@ -137,16 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
    * replacing non‑alphanumerics with hyphens. Images, if provided,
    * appear at the top of the card.
    */
+  function slugify(text) {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
   function renderProjects() {
     projectsContainer.innerHTML = '';
     projects.forEach(project => {
-      // Build a URL‑friendly slug from the project title
-      const slug = project.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '');
+      const slug = slugify(project.title);
+
       const card = document.createElement('div');
       card.className = 'card';
+
       // Optional cover image
       if (project.image) {
         const img = document.createElement('img');
@@ -157,12 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
         img.style.marginBottom = '0.8rem';
         card.appendChild(img);
       }
+
       // Title
       const title = document.createElement('h3');
       title.textContent = project.title;
+
       // Description
       const desc = document.createElement('p');
       desc.textContent = project.description;
+
       // Tags
       const tagsEl = document.createElement('div');
       tagsEl.className = 'tags';
@@ -172,17 +182,22 @@ document.addEventListener('DOMContentLoaded', () => {
         span.textContent = t;
         tagsEl.appendChild(span);
       });
+
       card.appendChild(title);
       card.appendChild(desc);
       card.appendChild(tagsEl);
-      // Wrap card in anchor to link to detail page
+
+      // Wrap card in anchor
       const link = document.createElement('a');
-      link.href = `projects/${slug}.html`;
+      // Use explicit link if provided, otherwise fallback to slug
+      link.href = project.link || `projects/${slug}.html`;
       link.className = 'card-link';
       link.appendChild(card);
+
       projectsContainer.appendChild(link);
     });
   }
+
 
   function renderWork() {
     workContainer.innerHTML = '';

@@ -249,3 +249,46 @@ svg .tick text{fill:var(--muted)}
   color:#D4AF37 !important;
   text-decoration: none;
 }
+
+/* ---- Section base colours (not just on hover) ---- */
+
+/* Projects = red */
+#projects h2.section-title { color: var(--red-600); }
+#projects .card { border-color: var(--red-200); }
+#projects .card-title { color: var(--red-700); }
+#projects a { color: var(--red-600); }
+#projects a:hover { color: var(--red-700); }
+
+/* Coursework = teal */
+#coursework h2.section-title { color: var(--teal-700); }
+#coursework .card { border-color: var(--teal-200); }
+#coursework .card-title { color: var(--teal-800); }
+#coursework a { color: var(--teal-700); }
+#coursework a:hover { color: var(--teal-900); }
+
+/* Work = olive/green */
+#work h2.section-title { color: var(--green-700); }
+#work .card { border-color: var(--green-200); }
+#work .card-title { color: var(--green-800); }
+#work a { color: var(--green-700); }
+#work a:hover { color: var(--green-900); }
+
+/* Research = gold */
+#research h2.section-title { color: var(--gold-600); }
+#research .card { border-color: var(--gold-200); }
+#research .card-title { color: var(--gold-700); }
+#research a { color: var(--gold-700); }
+#research a:hover { color: var(--gold-800); }
+
+/* Make links inside cards inherit the section’s title colour when
+   they’re used as block titles */
+.card .card-title a { color: inherit; text-decoration: none; }
+.card .card-title a:hover { text-decoration: underline; }
+
+/* Softer default card bg to make borders read better */
+#projects .card,
+#coursework .card,
+#work .card,
+#research .card {
+  background: var(--colour-card);
+}
