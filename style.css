@@ -10,6 +10,12 @@
  * to maintain.
  */
 
+/* Pick ONE theme: */
+@import url("style_multi_light.css");      /* multicolour light */
+ /* @import url("style_green_light.css");  */ /* green light */
+ /* @import url("style_dark_custom.css"); */  /* dark */
+
+
 /* Colour variables for easy theming */
 :root {
   --colour-bg: #0a0d14;               /* deep navy/black background */

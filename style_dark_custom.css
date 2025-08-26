@@ -1,0 +1,66 @@
+/* Dark theme variant with deep greens.
+ *
+ * Keeps the dark science aesthetic but swaps the neon accent for a
+ * sophisticated forest green. Uses Spectral for headings and Work Sans
+ * for body text to soften the overall feel.
+ */
+
+@import url('style.css');
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --colour-bg: #0a0d14;
+  --colour-card: #111824;
+  --colour-accent: #466245;   /* forest green accent */
+  --colour-text: #e2e8f0;
+  --colour-subtle: #8fa1b5;
+  --colour-border: #1f2937;
+  --max-width: 1100px;
+  --transition-fast: 0.2s ease;
+  --radius: 8px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.35);
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--colour-bg);
+  color: var(--colour-text);
+  font-family: 'Work Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--colour-text);
+  font-family: 'Spectral', serif;
+}
+
+p {
+  color: var(--colour-subtle);
+}
+
+a {
+  color: var(--colour-accent);
+}
+
+a:hover {
+  color: #7fa184;
+}
+
+.navbar {
+  backdrop-filter: blur(8px);
+  background-color: rgba(10, 13, 20, 0.6);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.footer {
+  background-color: var(--colour-bg);
+  color: var(--colour-subtle);
+}
+
+.tag {
+  background-color: rgba(70, 98, 69, 0.15);
+  color: var(--colour-accent);
+}
+
+svg .bar:hover {
+  fill: #597f67;
+}

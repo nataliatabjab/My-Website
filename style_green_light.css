@@ -1,0 +1,76 @@
+/* Green light theme for Natalia Tabja portfolio
+ *
+ * This stylesheet builds on the original dark theme (style.css) but uses a
+ * much lighter palette inspired by forest tones and bone whites.
+ * Heading typography switches to Spectral to introduce a classic,
+ * academic feel while body copy stays clean with Work Sans.
+ */
+
+/* Pull in the base styles so we only need to override what changes */
+@import url('style.css');
+
+/* Load custom Google Fonts for this theme */
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap');
+
+/* Override colour and sizing variables */
+:root {
+  --colour-bg: #F5F3E9;          /* light bone background */
+  --colour-card: #ECE7D9;        /* pale card panels */
+  --colour-accent: #466245;      /* hunter green accent */
+  --colour-text: #20321E;        /* dark green primary text */
+  --colour-subtle: #6B7B65;      /* muted olive for secondary text */
+  --colour-border: #A9B09B;      /* soft grey‑green borders */
+  --max-width: 1100px;
+  --transition-fast: 0.2s ease;
+  --radius: 8px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+}
+
+/* Typography adjustments */
+body {
+  background-color: var(--colour-bg);
+  color: var(--colour-text);
+  font-family: 'Work Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--colour-text);
+  font-family: 'Spectral', serif;
+}
+
+p {
+  color: var(--colour-subtle);
+}
+
+a {
+  color: var(--colour-accent);
+}
+
+a:hover {
+  color: #7fa184;                /* lighter accent on hover */
+}
+
+/* Navigation bar: lighten background while preserving blur */
+.navbar {
+  backdrop-filter: blur(8px);
+  background-color: rgba(245, 243, 233, 0.6);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+/* Footer matches card tone */
+.footer {
+  background-color: var(--colour-card);
+  color: var(--colour-subtle);
+}
+
+/* Tag background uses a translucent accent tint */
+.tag {
+  background-color: rgba(70, 98, 69, 0.15);
+  color: var(--colour-accent);
+}
+
+/* Bars in the course chart lighten on hover */
+svg .bar:hover {
+  fill: #88a885;
+}

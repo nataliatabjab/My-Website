@@ -9,6 +9,14 @@
  * the chart can be clicked to filter the course list by category.
  */
 
+// Inject theme stylesheet on every page
+(function () {
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  // if style_multi_light.css is at repo root, use a root-relative URL:
+  link.href = 'style_multi_light.css';
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   /* Data definitions */
   const courses = [
@@ -27,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Optics', code: 'PHY385', category: 'Physics', description: 'Geometrical and physical optics, interference, diffraction and polarization.' },
     { title: 'Ordinary Differential Equations', code: 'MAT244', category: 'Mathematics', description: 'Linear ODEs, series solutions, Laplace transforms and applications.' },
     { title: 'Probability & Statistics', code: 'STA237', category: 'Mathematics', description: 'Random variables, distributions, estimation and hypothesis testing.' },
-    { title: 'Quantum Information', code: 'PHY365', category: 'Physics', description: 'Qubits, quantum gates, entanglement and quantum algorithms.' },
-    { title: 'Quantum Mechanics', code: 'PHY256', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.' },
     { title: 'Software Design', code: 'CSC207', category: 'Computer Science', description: 'Object‑oriented design principles, design patterns and software architectures.' },
     { title: 'Software Tools & Systems Programming', code: 'CSC209', category: 'Computer Science', description: 'Unix tools, shell programming, memory management and concurrency.' },
     { title: 'Thermal Physics', code: 'PHY252', category: 'Physics', description: 'Thermodynamics, statistical mechanics and kinetic theory.' },
-    { title: 'Time Series Analysis', code: 'PHY408', category: 'Physics', description: 'Fourier analysis, stochastic processes and time series modelling.' }
+    { title: 'Time Series Analysis', code: 'PHY408', category: 'Physics', description: 'Fourier analysis, stochastic processes and time series modelling.' },
+    { title: 'Quantum Information', code: 'PHY365', category: 'Physics', description: 'Qubits, quantum gates, entanglement and quantum algorithms.' },
+    { title: 'Quantum Mechanics', code: 'PHY256', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.' },
   ];
 
   const projects = [
@@ -41,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'A machine learning project exploring sleep and activity data collected from an Oura ring to predict daily readiness and identify patterns.',
       tags: ['Machine Learning', 'Python', 'Pandas'],
       // Use locally stored decorative wireframe image as a cover
-      image: 'assets/wireframe.png'
+      image: null
     },
     {
       title: 'Interactive Spirograph Visualiser',
