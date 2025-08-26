@@ -61,6 +61,12 @@ mark { background: var(--gold-100); padding: .1rem .25rem; border-radius: 4px; }
 #research   h2 { border-left: 6px solid var(--gold);  padding-left: .75rem; color: var(--gold); }
 #projects   h2 { border-left: 6px solid var(--red);   padding-left: .75rem; color: var(--red); }
 
+#coursework h3 {
+  margin-top: 2rem;     /* space above the heading */
+  margin-bottom: 1rem;  /* space below before chart */
+  color: var(--teal);   /* optional: match coursework accent */
+}
+
 /* ===== 4) SECTION CARD COLOURS + MATCHED HOVERS ======================== */
 
 /* Coursework (teal) */
@@ -129,17 +135,35 @@ svg .tick text{ fill: var(--colour-subtle); }
 
 /* Standalone research detail page card */
 .research-card{
-  border-left: 4px solid #D4AF37;
-  background: #f9f9f9;
+  /* size & centering */
+  width: auto;
+  max-width: 900px;
+  margin: 1rem auto 2rem;            /* center the card */
+
+  /* styling */
   padding: 1.5rem;
-  border-radius: 6px;
-  margin-bottom: 2rem;
+  background: #f9f9f9;
+  border-left: 4px solid #D4AF37;
+  border-radius: 10px;
   box-shadow: var(--shadow);
 }
-.research-card h3{ color: #000; margin-bottom: .5rem; }
-.research-card h3 a{ color: #000; text-decoration: none; }
-.research-card h3 a:hover{ color: #D4AF37; }
-.research-card h4{ color: #D4AF37; margin: 1.2rem 0 .5rem; }
+
+/* Titles/links */
+.research-card h3{ color:#000; margin:0 0 .5rem; }
+.research-card h3 a{ color:#000; text-decoration:none; }
+.research-card h3 a:hover{ color:#D4AF37; }
+.research-card h4{ color:#D4AF37; margin:1.2rem 0 .5rem; }
+
+/* Research card image (inside the card box) */
+.research-card-image{
+  display:block;
+  width:100%;               /* fills the card’s inner width */
+  height:auto;
+  margin-top:.75rem;        /* space under the paragraph */
+  border-radius:8px;
+  box-shadow: var(--shadow);
+}
+
 
 /* ===== 8) PROJECT DETAIL HELPERS (e.g., Virtual Fitness Assistant) ===== */
 
@@ -215,3 +239,32 @@ svg .tick text{ fill: var(--colour-subtle); }
 .gallery-item .meta{ padding: .75rem .9rem; }
 .gallery-item .meta h3{ margin: 0 0 .2rem; font-size: 1.05rem; }
 .gallery-item .meta p{ margin: 0; color: var(--colour-subtle); font-size: .9rem; }
+
+/* ===== Charts ===== */
+.chart-container {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  margin-top: 2rem;          /* space above chart */
+  margin-bottom: 1rem;       /* optional: space below */
+}
+
+#courseChart {
+  max-width: 100%;           /* responsive */
+  height: auto;
+}
+
+/* --- Creative pages: responsive gallery grid --- */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin-top:1rem;
+}
+.gallery img, .gallery video{
+  width:100%;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:var(--colour-card);
+}
+.hero-media{width:100%;max-width:900px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
+.meta{color:var(--colour-subtle);}

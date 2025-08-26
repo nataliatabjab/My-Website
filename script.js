@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const courses = [
     { title: 'Artificial Intelligence', code: 'CSC384', category: 'Computer Science', description: 'Search algorithms, reasoning, constraint satisfaction, and machine learning basics.' },
     { title: 'Calculus', code: 'MAT137/MAT235', category: 'Mathematics', description: 'Differential and integral calculus of one and several variables with applications.' },
-    { title: 'Classical Mechanics', code: 'PHY254', category: 'Physics', description: 'Newtonian mechanics, Lagrangian and Hamiltonian formalisms and rigid body motion.' },
+    { title: 'Classical Mechanics', code: 'PHY254/354', category: 'Physics', description: 'Newtonian mechanics, Lagrangian and Hamiltonian formalisms and rigid body motion.' },
     { title: 'Computational Physics', code: 'PHY407', category: 'Physics', description: 'Numerical methods and scientific computing applied to physical systems.' },
     { title: 'Computer Science/Programming', code: 'CSC108/CSC148', category: 'Computer Science', description: 'Introduction to programming, data types, recursion and data abstraction.' },
     { title: 'Data Structures & Analysis', code: 'CSC263', category: 'Computer Science', description: 'Design and analysis of data structures and algorithms.' },
-    { title: 'Electricity & Magnetism', code: 'PHY250', category: 'Physics', description: 'Electrostatics, magnetostatics, Maxwell’s equations and electromagnetic waves.' },
+    { title: 'Electricity & Magnetism', code: 'PHY250/350', category: 'Physics', description: 'Electrostatics, magnetostatics, Maxwell’s equations and electromagnetic waves.' },
     { title: 'Electronics Lab', code: 'PHY405', category: 'Physics', description: 'Hands‑on experience building and analyzing electronic circuits.' },
     { title: 'Interactive Computational Media', code: 'CSC318', category: 'Computer Science', description: 'Human‑computer interaction and interactive media design.' },
     { title: 'Linear Algebra', code: 'MAT223', category: 'Mathematics', description: 'Vector spaces, linear transformations, eigenvalues and eigenvectors.' },
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Thermal Physics', code: 'PHY252', category: 'Physics', description: 'Thermodynamics, statistical mechanics and kinetic theory.' },
     { title: 'Time Series Analysis', code: 'PHY408', category: 'Physics', description: 'Fourier analysis, stochastic processes and time series modelling.' },
     { title: 'Quantum Information', code: 'PHY365', category: 'Physics', description: 'Qubits, quantum gates, entanglement and quantum algorithms.' },
-    { title: 'Quantum Mechanics', code: 'PHY256', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.' },
+    { title: 'Quantum Mechanics', code: 'PHY256/356', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.' },
   ];
 
   const projects = [
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const creativeWorks = [
     {
-      title: "Aston Martin F1 Car",
+      title: "Aston Martin AMR22",
       description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
       tags: ["Drawing", "F1", "Colored Pencil"],
       image: "images/creative/F1 cars/aston_martin.jpg"
@@ -104,26 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
       image: "images/creative/F1 cars/ferrari_f2007.jpg"
     },
     {
-      title: "Electric Guitar",
-      description: "A Les Paul–style electric guitar in vibrant colors.",
-      tags: ["Drawing", "Music", "Colored Pencil"],
-      image: "images/creative/Guitar/guitar.jpeg"
-    },
-    {
-      title: "Monstera Leaf",
-      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
-      tags: ["Drawing", "Botanical", "Colored Pencil"],
-      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
-    },
-    {
       title: "Mark Knopfler",
       description: "Work-in-progress piece of Mark Knopfler playing guitar.",
       tags: ["Drawing", "Portrait", "Music"],
       image: "images/creative/Mark Knopfler/MK_1.jpeg"
     },
     {
+      title: "Epiphone Les Paul Special II",
+      description: "My Epiphone Les Paul Special II electric guitar in vibrant hues.",
+      tags: ["Drawing", "Music", "Colored Pencil"],
+      image: "images/creative/Guitar/guitar.jpeg"
+    },
+    {
+      title: "Monstera Deliciosa",
+      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
+      tags: ["Drawing", "Botanical", "Colored Pencil"],
+      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
+    },
+    {
       title: "Tiger",
-      description: "Hyperrealistic colored pencil drawing of a tiger, step-by-step process included.",
+      description: "Hyperrealistic iPad drawing of a tiger, step-by-step process included. Done on the app 'Paper'.",
       tags: ["Drawing", "Wildlife", "Colored Pencil"],
       image: "images/creative/tiger/tiger.jpeg"
     }
