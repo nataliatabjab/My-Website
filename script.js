@@ -84,6 +84,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  const creativeWorks = [
+    {
+      title: "Aston Martin F1 Car",
+      description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
+      tags: ["Drawing", "F1", "Colored Pencil"],
+      image: "images/creative/F1 cars/aston_martin.jpg"
+    },
+    {
+      title: "Ferrari F2007",
+      description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
+      tags: ["Drawing", "F1", "Ferrari"],
+      image: "images/creative/F1 cars/ferrari_f2007.jpg"
+    },
+    {
+      title: "Electric Guitar",
+      description: "A Les Paul–style electric guitar in vibrant colors.",
+      tags: ["Drawing", "Music", "Colored Pencil"],
+      image: "images/creative/Guitar/guitar.jpeg"
+    },
+    {
+      title: "Monstera Leaf",
+      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
+      tags: ["Drawing", "Botanical", "Colored Pencil"],
+      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
+    },
+    {
+      title: "Mark Knopfler",
+      description: "Work-in-progress piece of Mark Knopfler playing guitar.",
+      tags: ["Drawing", "Portrait", "Music"],
+      image: "images/creative/Mark Knopfler/MK_1.jpeg"
+    },
+    {
+      title: "Tiger",
+      description: "Hyperrealistic colored pencil drawing of a tiger, step-by-step process included.",
+      tags: ["Drawing", "Wildlife", "Colored Pencil"],
+      image: "images/creative/tiger/tiger.jpeg"
+    }
+  ];
+
+  function renderCreative() {
+    const container = document.getElementById('creative-list');
+    container.innerHTML = '';
+    creativeWorks.forEach(work => {
+      const slug = work.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      if (work.image) {
+        const img = document.createElement('img');
+        img.src = work.image;
+        img.alt = work.title;
+        img.style.width = '100%';
+        img.style.borderRadius = 'var(--radius)';
+        img.style.marginBottom = '0.8rem';
+        card.appendChild(img);
+      }
+
+      const title = document.createElement('h3');
+      title.textContent = work.title;
+      const desc = document.createElement('p');
+      desc.textContent = work.description;
+
+      const tagsEl = document.createElement('div');
+      tagsEl.className = 'tags';
+      work.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t;
+        tagsEl.appendChild(span);
+      });
+
+      card.appendChild(title);
+      card.appendChild(desc);
+      card.appendChild(tagsEl);
+
+      const link = document.createElement('a');
+      link.href = `creative/${slug}.html`;
+      link.className = 'card-link';
+      link.appendChild(card);
+
+      container.appendChild(link);
+    });
+  }
+
+  // Call this with your other render calls
+  renderCreative();
+
   /* DOM references */
   const coursesContainer = document.getElementById('courses-list');
   const projectsContainer = document.getElementById('projects-list');

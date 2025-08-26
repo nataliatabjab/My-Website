@@ -280,6 +280,49 @@ svg .tick text{fill:var(--muted)}
 #research a { color: var(--gold-700); }
 #research a:hover { color: var(--gold-800); }
 
+/* Creative section — gold accent, clean gallery */
+#creative h2{
+  border-left: 6px solid var(--gold);
+  padding-left: .75rem;
+  color: var(--gold);
+}
+
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item{
+  background: var(--colour-card);
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: .6rem;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+
+.gallery-item:hover{
+  border-color: rgba(227,194,42,.55);            /* gold rim */
+  box-shadow: 0 10px 24px rgba(227,194,42,.15);
+  transform: translateY(-1px);
+}
+
+.gallery-item img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.gallery-item figcaption{
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: var(--colour-subtle);
+}
+
+
 /* Make links inside cards inherit the section’s title colour when
    they’re used as block titles */
 .card .card-title a { color: inherit; text-decoration: none; }

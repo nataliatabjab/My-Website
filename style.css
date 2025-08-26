@@ -320,5 +320,20 @@ svg .axis line {
   color: var(--colour-accent, #2A8A8B);
 }
 
+/* --- Creative pages: responsive gallery grid --- */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin-top:1rem;
+}
+.gallery img, .gallery video{
+  width:100%;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:var(--colour-card);
+}
+.hero-media{width:100%;max-width:900px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
+.meta{color:var(--colour-subtle);}
 
 /* Contact form or details can be styled here later */
