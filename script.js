@@ -1,5 +1,5 @@
 /*
- * Interactivity for Natalia's personal portfolio.
+ * Interactivity for my personal portfolio.
  *
  * This script populates course, project and work sections, draws a simple
  * bar chart of courses by category and renders an animated wireframe grid
@@ -89,95 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
       tags: ['Teaching', 'Python']
     }
   ];
-
-  const creativeWorks = [
-    {
-      title: "Aston Martin AMR21",
-      slug: "aston-martin-f1-car",  // creative/aston-martin-f1-car.html
-      description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
-      tags: ["Drawing", "F1", "Colored Pencil"],
-      image: "images/creative/F1 cars/aston_martin.jpg"
-    },
-    {
-      title: "Ferrari F2007",
-      slug: "ferrari-f2007",
-      description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
-      tags: ["Drawing", "F1", "Ferrari"],
-      image: "images/creative/F1 cars/ferrari_f2007.jpg"
-    },
-    {
-      title: "Mark Knopfler",
-      slug: "mark-knopfler",
-      description: "Work-in-progress piece of Mark Knopfler playing guitar.",
-      tags: ["Drawing", "Portrait", "Music"],
-      image: "images/creative/Mark Knopfler/MK_1.jpeg"
-    },
-    {
-      title: "Epiphone Les Paul Special II",
-      slug: "guitar",
-      description: "My Epiphone Les Paul Special II electric guitar in vibrant hues.",
-      tags: ["Drawing", "Music", "Colored Pencil"],
-      image: "images/creative/Guitar/guitar.jpeg"
-    },
-    {
-      title: "Monstera Deliciosa",
-      slug: "monstera-deliciosa",
-      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
-      tags: ["Drawing", "Botanical", "Colored Pencil"],
-      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
-    },
-    {
-      title: "Tiger",
-      slug: "tiger",
-      description: "Hyperrealistic iPad drawing of a tiger, step-by-step process included. Done on the app 'Paper'.",
-      tags: ["Drawing", "Wildlife", "Colored Pencil"],
-      image: "images/creative/tiger/tiger.jpeg"
-    }
-  ];
-
-
-  function renderCreative() {
-    const container = document.getElementById('creative-list');
-    container.innerHTML = '';
-    creativeWorks.forEach(work => {
-      // Use explicit slug when provided; otherwise fallback to title slug
-      const slug = work.slug ?? work.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-
-      const link = document.createElement('a');
-      link.className = 'gallery-item';
-      link.href = `creative/${slug}.html`;
-
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      if (work.image) {
-        const thumb = document.createElement('div');
-        thumb.className = 'thumb';
-        const img = document.createElement('img');
-        // Encode to be safe with spaces/case-sensitive hosts
-        img.src = encodeURI(work.image);
-        img.alt = work.title;
-        thumb.appendChild(img);
-        card.appendChild(thumb);
-      }
-
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      const h3 = document.createElement('h3');
-      h3.textContent = work.title;
-      const p = document.createElement('p');
-      p.textContent = work.description;
-      meta.appendChild(h3);
-      meta.appendChild(p);
-      card.appendChild(meta);
-
-      link.appendChild(card);
-      container.appendChild(link);
-    });
-  }
-
-  // Call this with your other render calls
-  renderCreative();
 
   /* DOM references */
   const coursesContainer = document.getElementById('courses-list');
@@ -329,6 +240,95 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     return counts;
   }
+
+    const creativeWorks = [
+    {
+      title: "Aston Martin AMR21",
+      slug: "aston-martin-f1-car",  // creative/aston-martin-f1-car.html
+      description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
+      tags: ["Drawing", "F1", "Colored Pencil"],
+      image: "images/creative/F1 cars/aston_martin.jpg"
+    },
+    {
+      title: "Ferrari F2007",
+      slug: "ferrari-f2007",
+      description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
+      tags: ["Drawing", "F1", "Ferrari"],
+      image: "images/creative/F1 cars/ferrari_f2007.jpg"
+    },
+    {
+      title: "Mark Knopfler",
+      slug: "mark-knopfler",
+      description: "Work-in-progress piece of Mark Knopfler playing guitar.",
+      tags: ["Drawing", "Portrait", "Music"],
+      image: "images/creative/Mark Knopfler/MK_1.jpeg"
+    },
+    {
+      title: "Epiphone Les Paul Special II",
+      slug: "guitar",
+      description: "My Epiphone Les Paul Special II electric guitar in vibrant hues.",
+      tags: ["Drawing", "Music", "Colored Pencil"],
+      image: "images/creative/Guitar/guitar.jpeg"
+    },
+    {
+      title: "Monstera Deliciosa",
+      slug: "monstera-deliciosa",
+      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
+      tags: ["Drawing", "Botanical", "Colored Pencil"],
+      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
+    },
+    {
+      title: "Tiger",
+      slug: "tiger",
+      description: "Hyperrealistic iPad drawing of a tiger, step-by-step process included. Done on the app 'Paper'.",
+      tags: ["Drawing", "Wildlife", "Colored Pencil"],
+      image: "images/creative/tiger/tiger.jpeg"
+    }
+  ];
+
+
+  function renderCreative() {
+    const container = document.getElementById('creative-list');
+    container.innerHTML = '';
+    creativeWorks.forEach(work => {
+      // Use explicit slug when provided; otherwise fallback to title slug
+      const slug = work.slug ?? work.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+      const link = document.createElement('a');
+      link.className = 'gallery-item';
+      link.href = `creative/${slug}.html`;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      if (work.image) {
+        const thumb = document.createElement('div');
+        thumb.className = 'thumb';
+        const img = document.createElement('img');
+        // Encode to be safe with spaces/case-sensitive hosts
+        img.src = encodeURI(work.image);
+        img.alt = work.title;
+        thumb.appendChild(img);
+        card.appendChild(thumb);
+      }
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const h3 = document.createElement('h3');
+      h3.textContent = work.title;
+      const p = document.createElement('p');
+      p.textContent = work.description;
+      meta.appendChild(h3);
+      meta.appendChild(p);
+      card.appendChild(meta);
+
+      link.appendChild(card);
+      container.appendChild(link);
+    });
+  }
+
+  // Call this with your other render calls
+  renderCreative();
 
   /* Draw bar chart using plain SVG */
   function drawCourseChart() {
