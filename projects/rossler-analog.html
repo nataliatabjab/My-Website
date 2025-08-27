@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analog Implementation of the Rössler Chaotic System Using Operational Amplifiers</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style_multi_light.css">
+  <script defer src="../script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
+      <ul class="nav-links">
+        <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="project-title">Analog Implementation of the Rössler Chaotic System Using Operational Amplifiers</h1>
+      <p class="project-subtitle">
+        Breadboarded the continuous-time Rössler system with op-amp integrators/summers and tunable resistor networks;
+        characterized chaotic regimes and periodic transitions via oscilloscope phase portraits.
+      </p>
+
+      <div class="project-actions">
+        <!-- Add a repo later if you like -->
+        <!-- <a class="button button--primary" href="https://github.com/nataliatabjab/rossler-analog" target="_blank" rel="noopener">View repository</a> -->
+        <!-- Link to the full PDF (place it in your repo, e.g., /docs/ or /projects/) -->
+        <a class="button button--primary" href="../docs/PHY405_Final_Report.pdf" target="_blank" rel="noopener">View full report (PDF)</a>
+        <a class="button button--ghost" href="../index.html#projects">← Back to Projects</a>
+      </div>
+
+      <!-- Hero figure -->
+      <figure class="embed figure-narrow">
+        <img
+          src="../images/courses/phy405/rossler-circuit-sketch.png"
+          alt="Block-level sketch of the analog Rössler circuit with op-amp summers/integrators"
+          loading="lazy"
+          decoding="async"
+          style="width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>
+          <strong>Figure.</strong> Three op-amp integrator stages implement <em>ẋ, ẏ, ż</em>; resistor ratios
+          set parameters <em>a, b, c</em>. Phase-portrait captures (x–y, x–z) reveal the characteristic chaotic attractor.
+        </figcaption>
+      </figure>
+
+      <!-- Abstract / Overview -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Overview</h2>
+        <p>
+          We realize the Rössler system in hardware using LF356 op-amps: each differential equation is mapped to an
+          inverting integrator with a summing front-end that sets coefficients via resistor ratios. A diode-conditioned
+          offset implements the constant term in <em>ż</em>, and adjustable resistors tune <em>a, b, c</em>. We verify chaotic
+          dynamics on the scope and study transitions to periodic orbits by sweeping component values.
+        </p>
+      </section>
+
+      <!-- Key details -->
+      <div class="meta-grid" style="margin-top:.25rem;">
+        <div>
+          <h3>Hardware & Methods</h3>
+          <ul>
+            <li>LF356 JFET op-amps; three inverting integrators + summers</li>
+            <li>Common time constant ~ <code>R·C = 98 kΩ × 1 nF ≈ 9.8×10<sup>−5</sup> s</code> (fast physical timescale)</li>
+            <li>Voltage divider + diode path provide offset for <em>b</em> and shift for <em>c</em></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Parameter Mapping</h3>
+          <ul>
+            <li><strong>a</strong> from y-feedback gain (e.g., <code>a ≈ 9.8/82.3 ≈ 0.12</code>)</li>
+            <li><strong>b</strong> from diode-limited offset into ż (small positive drive)</li>
+            <li><strong>c</strong> via fixed voltage summed with x into z-stage</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Results (concise) -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Results</h2>
+        <p>
+          Oscilloscope portraits reproduce the Rössler attractor. Increasing <em>a</em> elongates/layers the loops; increasing
+          the offset path resistance (affecting <em>b</em>, <em>c</em>) contracts the attractor and eventually yields periodic motion.
+          The behavior aligns with expected nonlinear dynamics for the Rössler system.
+        </p>
+      </section>
+
+      <!-- Troubleshooting -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Debugging</h2>
+        <p>
+          We isolated a faulty op-amp by temporarily reconfiguring each as a standalone integrator driven by a square
+          wave; replacing the bad device restored chaotic operation in the full circuit.
+        </p>
+      </section>
+
+      <!-- Optional embedded viewer for the PDF (if you prefer inline preview) -->
+      <!--
+      <figure class="embed figure-narrow">
+        <iframe src="https://drive.google.com/file/d/YOUR_FILE_ID/preview" allow="autoplay"></iframe>
+        <figcaption>Full report preview (Google Drive).</figcaption>
+      </figure>
+      -->
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja.</p></div></footer>
+</body>
+</html>

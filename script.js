@@ -49,19 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'A machine learning project exploring sleep and activity data collected from an Oura ring to predict daily readiness and identify patterns.',
       tags: ['Machine Learning', 'Python', 'Pandas'],
       link: 'projects/oura-ring-ml-analysis.html',
-      image: null
+      image: 'images/projects/oura-logo.png'
     },
     {
       title: 'Predicting Student Performance with Machine Learning',
       description: 'This project explores predicting student responses...',
       tags: ['Machine Learning', 'kNN', 'IRT', 'Autoencoders'],
-      link: 'projects/csc311-ml-project.html'
+      link: 'projects/csc311-ml-project.html',
+      image: 'images/projects/schematic.png'
     },
     {
       title: 'Virtual Fitness Assistant',
       description: 'A Java-based program that tracks macro/micro nutrients, evaluates recipes and suggests meals based on dietary and fitness goals.',
       tags: ['Java', 'Nutrition', 'API'],
-      image: null
+      image: 'images/projects/marvn.png'
+    },
+    // In script.js, inside `const projects = [ ... ]`
+    {
+      title: 'Analog Implementation of the Rössler Chaotic System Using Operational Amplifiers',
+      description: 'Op-amp summers/integrators implementing the Rössler system; parameter sweeps, scope portraits, and chaos.',
+      tags: ['Electronics', 'Analog', 'Chaos'],
+      link: 'projects/rossler-analog.html',
+      image: 'images/courses/phy405/rossler-circuit-sketch.png'
     },
     {
       title: 'Quantum Mechanics Simulator',
