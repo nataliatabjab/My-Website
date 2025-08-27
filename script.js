@@ -310,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.alt = work.title;
         thumb.appendChild(img);
         card.appendChild(thumb);
+        img.loading = "lazy";
       }
 
       const meta = document.createElement('div');
