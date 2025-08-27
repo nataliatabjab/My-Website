@@ -130,14 +130,55 @@ svg .tick text{ fill: var(--colour-subtle); }
 /* ===== 7) RESEARCH (preview + detail page styling) ===================== */
 
 /* Preview card link on index: black title, gold hover */
-#research .card h3 a{ color: #000 !important; text-decoration: none; }
-#research .card h3 a:hover{ color: #D4AF37 !important; }
+#research .card h3 a{ color:#000 !important; text-decoration:none; }
+#research .card h3 a:hover{ color:#D4AF37 !important; }
+
+/* Research preview card (index page) */
+.research-preview {
+  max-width: 1200px;                 /* your preferred width cap */
+  margin: 1rem 0 2rem;              /* flush-left under the heading */
+  padding: 1rem 1rem 1.25rem;
+  background: #f7f8f9;
+  border: 1px solid var(--colour-border);
+  border-radius: 12px;              /* round the CARD instead of the image */
+  box-shadow: var(--shadow);
+}
+
+/* Force research preview title to black */
+.research-preview h3 a {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.research-preview h3 a:hover {
+  color: #D4AF37 !important;   /* gold on hover for consistency */
+}
+
+/* Wrap image in a rounded, clipped media frame (prevents seam) */
+.research-preview .media {
+  border-radius: 10px;
+  overflow: hidden;                 /* clip the image edges cleanly */
+  box-shadow: none;                 /* shadow is on the card */
+}
+
+/* The photo itself: keep rectangular + force its own layer */
+.research-preview .media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;                 /* no rounding on the img itself */
+  box-shadow: none;                 /* no shadow on the img */
+  transform: translateZ(0);         /* fix for hairline seams */
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 
 /* Standalone research detail page card */
 .research-card{
   /* size & centering */
   width: auto;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 1rem auto 2rem;            /* center the card */
 
   /* styling */
@@ -154,13 +195,13 @@ svg .tick text{ fill: var(--colour-subtle); }
 .research-card h3 a:hover{ color:#D4AF37; }
 .research-card h4{ color:#D4AF37; margin:1.2rem 0 .5rem; }
 
-/* Research card image (inside the card box) */
+/* Research card image inside that card */
 .research-card-image{
-  display:block;
-  width:100%;               /* fills the card’s inner width */
-  height:auto;
-  margin-top:.75rem;        /* space under the paragraph */
-  border-radius:8px;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: .75rem;
+  border-radius: 8px;
   box-shadow: var(--shadow);
 }
 
@@ -266,5 +307,5 @@ svg .tick text{ fill: var(--colour-subtle); }
   box-shadow:var(--shadow);
   background:var(--colour-card);
 }
-.hero-media{width:100%;max-width:900px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
+.hero-media{width:100%;max-width:1200px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
 .meta{color:var(--colour-subtle);}
