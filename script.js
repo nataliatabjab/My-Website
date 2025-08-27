@@ -308,9 +308,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Encode to be safe with spaces/case-sensitive hosts
         img.src = encodeURI(work.image);
         img.alt = work.title;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.fetchPriority = 'low';
         thumb.appendChild(img);
         card.appendChild(thumb);
-        img.loading = "lazy";
       }
 
       const meta = document.createElement('div');
