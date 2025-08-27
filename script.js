@@ -247,14 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
       slug: "aston-martin-f1-car",  // creative/aston-martin-f1-car.html
       description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
       tags: ["Drawing", "F1", "Colored Pencil"],
-      image: "images/creative/F1 cars/aston_martin.jpg"
+      image: "images/creative/F1 Cars/aston_martin.jpg"
     },
     {
       title: "Ferrari F2007",
       slug: "ferrari-f2007",
       description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
       tags: ["Drawing", "F1", "Ferrari"],
-      image: "images/creative/F1 cars/ferrari_f2007.jpg"
+      image: "images/creative/F1 Cars/ferrari_f2007.jpg"
     },
     {
       title: "Mark Knopfler",
