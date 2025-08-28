@@ -352,3 +352,51 @@ svg .tick text{ fill: var(--colour-subtle); }
 .navbar .logo a:hover{ color: var(--colour-text); }     /* base stays dark */
 .navbar .logo a .accent{ color: var(--colour-accent); font-weight: 700; }
 .navbar .logo a:hover .accent{ color: var(--colour-accent-hover); }
+
+html, body {
+  margin: 0;              /* ensure no default margins */
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;     /* prevent tiny 1–2px iOS overflow */
+}
+
+/* Full-bleed nav with safe padding */
+.navbar {
+  position: sticky;       /* or fixed, if you prefer */
+  top: 0;
+  left: 0;
+  right: 0;               /* avoids 100vw scrollbar issues */
+  width: 100%;
+  z-index: 1000;
+  background: var(--colour-bg);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+/* Layout for the content inside the bar */
+.navbar .container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 16px;        /* edge padding on phones */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  min-width: 0;           /* prevents flex children forcing overflow */
+}
+
+.logo a { display: inline-block; text-decoration: none; }
+
+/* Links row */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;        /* allow wrap on narrow screens */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a { white-space: nowrap; }
+
+@media (max-width: 640px){
+  .nav-links { row-gap: .5rem; }
+}

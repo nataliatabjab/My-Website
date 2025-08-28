@@ -1,31 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Time Series Analysis (PHY408) – Natalia Tabja</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PHY408 — Time Series Analysis</title>
+
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style_multi_light.css">
 </head>
 <body>
-  <nav class="navbar">
+  <!-- Navbar -->
+  <header class="navbar">
     <div class="container">
-      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="/My-Website/index.html#coursework">Coursework</a></li>
+        <li><a href="/My-Website/index.html#projects">Projects</a></li>
+        <li><a href="/My-Website/index.html#work">Work</a></li>
+        <li><a href="/My-Website/index.html#research">Research</a></li>
+        <li><a href="/My-Website/index.html#creative">Creative</a></li>
       </ul>
     </div>
-  </nav>
-  <section class="section" style="padding-top:7rem;">
+  </header>
+
+  <main class="section">
     <div class="container">
-      <h2>Time Series Analysis (PHY408)</h2>
-      <p class="category-tag">Category: Physics</p>
-      <p>Fourier analysis, stochastic processes and time series modelling.</p>
-      <h3>Course Materials</h3>
-      <p>Data analysis projects, notes and assignment solutions for Time Series Analysis will appear here when ready.</p>
+      <h1 class="course-title">PHY408 — Time Series Analysis</h1>
+      <p class="course-subtitle">
+        Spectral analysis, stochastic processes, and statistical modelling/forecasting for physical signals.
+        Topics include FFT/periodograms, Welch PSD, ACF/PACF diagnostics, AR/MA/ARIMA, and rolling forecasts.
+      </p>
+
+      <!-- Buttons -->
+      <div class="action-bar" style="margin-bottom:1rem;">
+        <a class="button button--primary"
+           href="https://github.com/nataliatabjab/Time-Series-Analysis"
+           target="_blank" rel="noopener">View Repository</a>
+        <a class="button button--ghost" href="/My-Website/index.html#coursework">← Back to Coursework</a>
+      </div>
+
+      <!-- Optional hero figure (add an image later if you want) -->
+      <!--
+      <figure class="embed figure-narrow">
+        <img src="../images/courses/phy408/preview.png" alt="PHY408 preview" loading="lazy" decoding="async"
+             style="width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>Fourier analysis, PSD estimation, AR models, and forecasting.</figcaption>
+      </figure>
+      -->
+
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Labs & Assignments</h2>
+
+        <details class="accordion">
+          <summary><strong>Lab — Stationarity & Diagnostics</strong></summary>
+          <p class="muted">Detrending/differencing, ACF/PACF, Ljung–Box tests, rolling mean/var.</p>
+          <ul class="file-list">
+            <!-- Example file links if you place PDFs/scripts in docs/phy408/... -->
+            <!-- <li><a href="../docs/phy408/stationarity_lab.pdf" target="_blank" rel="noopener">Write-up (PDF)</a></li> -->
+            <!-- <li><a href="../docs/phy408/stationarity.ipynb" download>Notebook</a></li> -->
+          </ul>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>Lab — Spectral Analysis (FFT & Welch PSD)</strong></summary>
+          <p class="muted">Periodograms, windowing, Welch averaging; reading physical frequencies.</p>
+          <ul class="file-list"></ul>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>Lab — AR/MA/ARIMA Modelling</strong></summary>
+          <p class="muted">Model selection with AIC/BIC, residual diagnostics, forecast intervals.</p>
+          <ul class="file-list"></ul>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>Final — Forecasting & Evaluation</strong></summary>
+          <p class="muted">k-step rolling forecasts on experimental/real data, error curves and ablation.</p>
+          <ul class="file-list"></ul>
+        </details>
+      </section>
+
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="bullets">
+          <li>Computed **periodograms/PSD** (FFT + Welch) and verified energy via Parseval’s theorem.</li>
+          <li>Used **ACF/PACF** to diagnose order and verify stationarity/differencing.</li>
+          <li>Fitted **AR/MA/ARIMA** models with AIC/BIC selection and residual tests.</li>
+          <li>Built **rolling-origin forecasts** with confidence intervals & accuracy metrics.</li>
+        </ul>
+      </section>
     </div>
-  </section>
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Natalia Tabja.</p></div>
+  </footer>
 </body>
 </html>
