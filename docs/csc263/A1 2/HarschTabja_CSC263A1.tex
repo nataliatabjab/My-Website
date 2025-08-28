@@ -1,0 +1,125 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{graphicx, amsmath} % Required for inserting images
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+\section*{CSCB36 A1: Nena Harsch and Natalia Tabja}
+\section*{Question 1 (written by Natalia, verified by Nena)}
+
+We have the following conditions from the pseudocode:
+
+\textbf{Line 4:} \text{if A[n - j + 1] $\neq j$} \text{then return}
+
+For this condition to avoid an early return, we must have \( A[n - j + 1] = j \). This is equivalent to having the array in reverse order, where:
+
+\[
+A = [n, n-1, n-2, \dots, 2, 1]
+\]
+
+\textbf{Line 5:} \text{if (A[i] $\neq n - i + 1)$} or $(A[1] + A[2] = 2n - 1)$ \text{then return}
+
+For the first part of this condition to avoid an early return, \( A[i] \) must satisfy \( A[i] = n - i + 1 \) for all \( i \), which is the same condition as in \textbf{Line 4}. This also requires that the array remains in reverse order.
+
+However, for the second part of this condition, we need to ensure that \( A[1] + A[2] \neq 2n - 1 \) to avoid an early return. In a reverse-ordered array, \( A[1] = n \) and \( A[2] = n - 1 \), which leads to:
+
+\[
+A[1] + A[2] = n + (n - 1) = 2n - 1
+\]
+
+This always triggers an early return due to the second condition in \textbf{Line 5}. Hence, there is no way to construct an array that will avoid all returns. This early return is inevitable for any reverse-ordered array. \\
+
+During the first iteration of the outer loop, the inner loop will run \( n \) times, checking each element of the array. However, once the inner loop completes, the condition in \textbf{Line 5} will evaluate to true because \( A[1] + A[2] = 2n - 1 \), and the function will return. Therefore, in this case, the function performs \( n \) iterations of the inner loop before returning, which represents the worst-case scenario. \\
+
+For any other array that is \textit{not} reverse-ordered, the function will return even earlier, as the condition in \textbf{Line 4} will likely be violated during the first few iterations of the inner loop. This makes the reverse-ordered array the worst possible case, where the function proceeds furthest before returning. \\
+
+\textbf{Time Complexity:}
+
+In the worst-case scenario, where the array is in reverse order, the inner loop runs \( n \) times for the first iteration of the outer loop, and then the function returns due to the condition in \textbf{Line 5}. Each iteration of the loop involves constant-time operations (comparisons and assignments), so the time complexity for the worst-case scenario is:
+
+\[
+T(n) = O(n)
+\]
+
+Since the function performs at most \( n \) iterations before returning, the worst-case time complexity is linear. Additionally, because the function must perform at least \( n \) operations in the worst case, we can also state that:
+
+\[
+T(n) = \Omega(n)
+\]
+
+Thus, we conclude that the time complexity for the worst-case scenario is:
+
+\[
+T(n) = \Theta(n)
+\]
+
+\section*{Question 2 (written by Nena, verified by Natalia)}
+
+a. For this question, the pseudocode is defined in Algorithm 1 and 2: \\
+
+\textbf{Algorithm 2 explanation:} \\
+\textbf{General note:} The functions $insert\_into\_max$ and $insert\_into\_min$ are both insert functions for heap with the same idea as insert(A, x), just the names help the reader see what kind of heap we are inserting into" max or min heap. \\\\
+\textbf{Lines 4-5:} Here we are creating two heaps: one to store the higher half of the numbers and one to store the lower half of the numbers. We will make low a max heap so that the root is the highest of the low numbers. We will make high a min heap so that the root is the lowest of the high numbers. We store the first number in array A in the low heap. If i is even, then each heap should have an equal amount of nodes. If i is odd, the the low heap should have one more node than the high heap (Note: could be interchanged, but must stick with it the entire code). 
+\\\\
+\textbf{Line 7: } This loop will iterate through the rest of the numbers in the prefix and put them in the right heap. If we only have one value in the array A, then this for loop is skipped and goes right to line 23.
+\\\\
+\textbf{Lines 8-12: } For each value in array A, we will first assign it to low or high heap. We will check if the value is greater than the root of the low heap (which is stored at index 0), and if it is we will insert it into the high heap. Else, we will insert it into the low heap.
+\\\\
+\textbf{Lines 14-20: } Here we will balance the heaps. This will ensure that low's root and high's root will be close or contain the median since low's root is the max of the lower half of the numbers and high's root is the min of the upper half of the numbers. If the low heap has too many numbers, then we will remove the root (which is the max of the heap) and move it to the high heap. On the contrary, if the high heap has too many numbers, then we will remove the root (which is the min of the heap) and move it to the low heap.
+\\\\
+\textbf{Lines 23-27: } If the heap only contains one item (high.heapsize == 0) or the prefix is an odd length, then the median will be contained at the root of the low heap (low[0]). Else, if the heap is even, we need to take the mean of low heap's and high heap's roots.
+\\\\
+\textbf{Argument: } This algorithm is correct because it creates two heaps that contain the lower half of the numbers and the upper half of the numbers in the given prefix. Heaps allow us to dynamically add values and maintain that they are balanced. The max heap (low) allows quick access to the largest element in the lower half. The min heap (high) allows quick access to the smallest element in the upper half. Therefore, we can calculate the median. In even cases, we take the average of the roots. In the odd case, we just take the root of the heap with one node greater (in this case the low heap). 
+\\\\
+b. First we find the runtime for the algorithm Median. In the worst case, we know that inserting into a heap, extracting the min or max node of the heap are bounded by $\Theta(\log_2{n})$. These are found in lines 9, 11, 15, 16, 18, 19. Finding the heapsize and extracting the max and min are bounded by constant time $\Theta(1)$. Therefore, if we put it all together, the algorithm Median(A, i) in the worst case can be defined as $f(n) = (i-2)(\log_2{n} + \log_2{n} + \log_2{n} + constants)$. If we find Theta, we can simplify this to $\Theta(\log_2)$. We will run the algorithm Median n times because there are n prefixes for an array A of size n. Assigning each predixes median to the ith index of array M will be constant time. Therefore, the whole algorithm that computes the median of every prefix of an input array A will run in time $\Theta(n\log_2)$
+
+
+\begin{algorithm} [H]
+\caption{COMPUTE-PREFIX-MEDIANS(A, M)}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Input array \( A \), Output array \( M \)
+\State \textbf{Output:} All prefix's medians stored in output array \( M \)
+\\
+\For{i = 1 \textbf{ to } n} 
+     \State M[i] = MEDIAN(A, i)
+\EndFor
+
+
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm} [H]
+\caption{MEDIAN(A, i)}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Array \( A \), index of end of prefix \( i \)
+\State \textbf{Output:} Median of the prefix of length \( i \) in array \( A \)
+\\
+\State low = [A[1]] 
+\State high = [ ]
+\\
+\For{j = 2 \textbf{ to } i}
+    \If{A[j] $>$ low[0]}
+        \State insert\_into\_min(high, A[j])
+    \Else
+        \State insert\_into\_max(low, A[j])
+    \EndIf
+    \\
+    \If{low.\text{heapsize} $>$ high.\text{heapsize} + 1}
+        \State \text{max} = extract\_max(low)
+        \State insert\_into\_min(high, \text{max})
+    \ElsIf{high.\text{heapsize} $>$ low.\text{heapsize}}
+        \State \text{min} = extract\_min(high)
+        \State insert\_into\_max(low, \text{min})
+    \EndIf
+\EndFor
+\\
+\If{high.\text{heapsize} == 0 \textbf{ or } i \% 2 == 1}
+    \State \Return low[0]
+\Else
+    \State \Return $\frac{low[0] + high[0]}{2}$
+\EndIf
+
+\end{algorithmic}
+\end{algorithm}
+\end{document}

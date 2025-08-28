@@ -1,31 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Machine Learning (CSC311) – Natalia Tabja</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSC311 — Machine Learning</title>
+
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style_multi_light.css">
 </head>
 <body>
-  <nav class="navbar">
+  <!-- Navbar -->
+  <header class="navbar">
     <div class="container">
-      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
       </ul>
     </div>
-  </nav>
-  <section class="section" style="padding-top:7rem;">
+  </header>
+
+  <main class="section">
     <div class="container">
-      <h2>Machine Learning (CSC311)</h2>
-      <p class="category-tag">Category: Computer Science</p>
-      <p>Supervised and unsupervised learning, neural networks, optimisation.</p>
-      <h3>Course Materials</h3>
-      <p>Course projects, code notebooks and lecture notes for Machine Learning will be available here.</p>
+      <h1 class="course-title">CSC311 — Machine Learning</h1>
+      <p class="course-subtitle">
+        Supervised learning, model selection, generative vs. discriminative models, and probabilistic inference —
+        demonstrated through three homeworks with code, writeups, and visualizations.
+      </p>
+
+      <!-- Action buttons -->
+      <div class="project-actions" style="margin-bottom:1rem;">
+        <a class="button button--primary"
+           href="https://github.com/nataliatabjab/CSC311-ML-Project"
+           target="_blank" rel="noopener">View Repository</a>
+        <a class="button button--ghost" href="../index.html#coursework">← Back to Coursework</a>
+      </div>
+
+      <!-- Optional hero figure; remove if you don't have one yet -->
+      <!--
+      <figure class="embed figure-narrow">
+        <img src="../images/courses/csc311/preview.png" alt="CSC311 preview"
+             loading="lazy" decoding="async"
+             style="width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>Decision trees, naïve Bayes, model selection and evaluation.</figcaption>
+      </figure>
+      -->
+
+      <!-- Assignments -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Homeworks</h2>
+
+        <!-- HW1 -->
+        <details class="accordion" open>
+          <summary><strong>Homework 1 — Data Cleaning & Classical Models</strong></summary>
+          <p class="muted">Text cleaning, feature extraction, baselines; decision tree analysis and validation curves.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc311/Homework 1/hw1.pdf" target="_blank" rel="noopener">HW1 (PDF)</a> &middot;
+                <a href="../docs/csc311/Homework 1/hw1_writeup.pdf" target="_blank" rel="noopener">writeup</a></li>
+            <li><a href="../docs/csc311/Homework 1/hw1_code.py" download>hw1_code.py</a></li>
+            <li><a href="../docs/csc311/Homework 1/clean_script.py" download>clean_script.py</a> &middot;
+                <a href="../docs/csc311/Homework 1/clean_fake.txt" download>clean_fake.txt</a> /
+                <a href="../docs/csc311/Homework 1/clean_real.txt" download>clean_real.txt</a></li>
+            <li><a href="../docs/csc311/Homework 1/q4_decision_tree.png" target="_blank" rel="noopener">q4_decision_tree.png</a> &middot;
+                <a href="../docs/csc311/Homework 1/max_depth_v_validation_accuracy.png" target="_blank" rel="noopener">validation curve</a></li>
+            <!-- Optional folders (expose if you want): q1c, q3-datasets, select_model_output -->
+          </ul>
+        </details>
+
+        <!-- HW2 -->
+        <details class="accordion">
+          <summary><strong>Homework 2 — Model Selection & Visualization</strong></summary>
+          <p class="muted">Bias–variance tradeoffs, cross-validation, plotting decision boundaries/results.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc311/Homework 2/hw2.pdf" target="_blank" rel="noopener">HW2 (PDF)</a> &middot;
+                <a href="../docs/csc311/Homework 2/hw2_writeup.pdf" target="_blank" rel="noopener">writeup</a></li>
+            <li><a href="../docs/csc311/Homework 2/q4.py" download>q4.py</a> &middot;
+                <a href="../docs/csc311/Homework 2/q4.png" target="_blank" rel="noopener">q4.png</a></li>
+            <!-- If you want to expose the q3/ folder, add links to specific files inside it -->
+          </ul>
+        </details>
+
+        <!-- HW3 -->
+        <details class="accordion">
+          <summary><strong>Homework 3 — Generative Models (MAP/ML), Naïve Bayes</strong></summary>
+          <p class="muted">Derivations and implementation of ML/MAP estimators; naïve Bayes; small data utilities.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc311/Homework 3/hw3.pdf" target="_blank" rel="noopener">HW3 (PDF)</a> &middot;
+                <a href="../docs/csc311/Homework 3/hw3_writeup.pdf" target="_blank" rel="noopener">writeup</a></li>
+            <li><a href="../docs/csc311/Homework 3/naive_bayes.py" download>naive_bayes.py</a> &middot;
+                <a href="../docs/csc311/Homework 3/q4.py" download>q4.py</a></li>
+            <li><a href="../docs/csc311/Homework 3/data/data.py" download>data/data.py</a> &middot;
+                <a href="../docs/csc311/Homework 3/diagram.py" download>diagram.py</a></li>
+            <li><a href="../docs/csc311/Homework 3/map.png" target="_blank" rel="noopener">map.png</a> &middot;
+                <a href="../docs/csc311/Homework 3/mle.png" target="_blank" rel="noopener">mle.png</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- Takeaways -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="bullets">
+          <li>Compared decision trees and naïve Bayes; examined overfitting via validation curves.</li>
+          <li>Built end-to-end pipelines: cleaning → features → training → evaluation → plots.</li>
+          <li>Implemented ML/MAP estimators and analysed their behaviour on synthetic & real data.</li>
+        </ul>
+      </section>
     </div>
-  </section>
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Natalia Tabja.</p></div>
+  </footer>
 </body>
 </html>

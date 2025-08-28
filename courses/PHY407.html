@@ -1,31 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Computational Physics (PHY407) – Natalia Tabja</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PHY407 — Computational Physics</title>
+
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style_multi_light.css">
 </head>
 <body>
-  <nav class="navbar">
+  <header class="navbar">
     <div class="container">
-      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
       </ul>
     </div>
-  </nav>
-  <section class="section" style="padding-top:7rem;">
+  </header>
+
+  <main class="section">
     <div class="container">
-      <h2>Computational Physics (PHY407)</h2>
-      <p class="category-tag">Category: Physics</p>
-      <p>Numerical methods and scientific computing applied to physical systems.</p>
-      <h3>Course Materials</h3>
-      <p>Course notes, coding assignments and projects for Computational Physics will appear here.</p>
+      <h1 class="course-title">PHY407 — Computational Physics</h1>
+      <p class="course-subtitle">
+        Numerical methods applied to physics: root finding, Monte-Carlo integration, finite-difference schemes for ODEs and PDEs, spectral analysis and data fitting.
+      </p>
+
+      <div class="action-bar">
+        <a class="button button--primary" ...>View Repository</a>
+        <a class="button button--ghost" href="../index.html#coursework">← Back to Coursework</a>
+      </div>
+
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Assignments</h2>
+
+        <details class="accordion" open>
+          <summary><strong>A1 — Iterative solvers & data fitting</strong></summary>
+          <p class="muted">
+            Implemented the Gauss-Seidel method for linear systems and explored root-finding and model fitting on noisy data sets. Generated plots comparing convergence with and without over-relaxation and assessed the effect of precision on iteration count.
+          </p>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>A2 — Harmonic oscillator & Monte-Carlo integration</strong></summary>
+          <p class="muted">
+            Discretised the Schrödinger equation for the quantum harmonic oscillator, computed eigenvalues and wavefunctions, and visualised them. Evaluated multi‑dimensional integrals using importance sampling and compared relative errors across sampling strategies.
+          </p>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>A3 — Fourier analysis & signal processing</strong></summary>
+          <p class="muted">
+            Applied discrete Fourier transforms to noisy signals, performed convolution for smoothing and denoising, and reconstructed an audio waveform from gravitational‑wave–like data.
+          </p>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>A4 — Partial differential equations</strong></summary>
+          <p class="muted">
+            Developed finite‑difference schemes for the heat equation, shallow‑water equations and Burgers’ equation. Analysed numerical stability conditions and compared FTCS and leapfrog schemes.
+          </p>
+        </details>
+
+        <details class="accordion">
+          <summary><strong>A5 — Capstone project</strong></summary>
+          <p class="muted">
+            Synthesised techniques from earlier assignments: solved Laplace’s equation with Gauss–Seidel relaxation (with and without over‑relaxation), computed electric field streamlines, evolved shallow‑water systems, and simulated Burgers’ equation via a leapfrog scheme.
+          </p>
+        </details>
+      </section>
+
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Formal Lab 4</h2>
+        <p class="muted">
+          My final report tackles three complex systems: (1) solving Laplace’s equation on a square grid using Gauss–Seidel relaxation, comparing convergence with and without over‑relaxation; (2) simulating the one‑dimensional shallow‑water equations via an FTCS scheme and visualising wave propagation; and (3) integrating Burgers’ equation with a leapfrog method, highlighting how non‑linear steepening induces numerical oscillations.
+        </p>
+        <figure class="embed figure-narrow">
+          <iframe src="../docs/phy407/A4/PHY407_Lab4_Natalia_Tabja.pdf" title="Formal Lab 4 report" allow="autoplay"></iframe>
+          <figcaption>Inline preview of the Formal Lab 4 report; open the document to view full details.</figcaption>
+        </figure>
+      </section>
+
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="bullets">
+          <li>Implemented Gauss–Seidel relaxation with and without over‑relaxation to solve Laplace’s equation and computed electric field lines from the potential.</li>
+          <li>Developed an FTCS scheme for the shallow‑water equations and analysed how grid spacing and time step affect stability.</li>
+          <li>Simulated Burgers’ equation using a leapfrog method and examined how non‑linear terms lead to numerical oscillations.</li>
+          <li>Explored quantum harmonic oscillators, Monte‑Carlo integration and spectral analysis through earlier assignments.</li>
+        </ul>
+      </section>
     </div>
-  </section>
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Natalia Tabja.</p></div>
+  </footer>
 </body>
 </html>

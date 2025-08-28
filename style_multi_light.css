@@ -50,7 +50,7 @@
   --mesh-color: var(--olive-300);
 
   /* Max width */
-  --content-max: 1000px;  /* global content width cap */
+  --content-max: 1200px;  /* global content width cap */
 }
 
 /* ===== 2) GLOBAL COLOUR WIRING (small polish) ========================== */
@@ -228,7 +228,7 @@ svg .tick text{ fill: var(--colour-subtle); }
 
 /* Meta grid pairs (e.g., tech stack / links) */
 .meta-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-@media (max-width: 900px){ .meta-grid{ grid-template-columns: 1fr; } }
+@media (max-width: 1200px){ .meta-grid{ grid-template-columns: 1fr; } }
 
 /* Optional thumbnail gallery inside project pages */
 .gallery{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; }
@@ -253,7 +253,7 @@ svg .tick text{ fill: var(--colour-subtle); }
 
 .muted { color: var(--colour-subtle); margin: .25rem 0 .5rem; }
 
-/* ===== 9) CREATIVE GALLERY (card grid like projects) =================== */
+/* ==================== 9) CREATIVE GALLERY (card grid like projects) ==================== */
 
 #creative h2{
   border-left: 6px solid var(--gold);
@@ -327,3 +327,14 @@ svg .tick text{ fill: var(--colour-subtle); }
 }
 .hero-media{width:100%;max-width:var(--content-max);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
 .meta{color:var(--colour-subtle);}
+
+/* ========================= 10) ACTION BARS ========================= */
+
+/* unified action bar for projects, courses, research */
+.action-bar,
+.project-actions,
+.course-actions {
+  display: flex;
+  gap: .75rem;
+  margin: 1rem 0 1.5rem;
+}
