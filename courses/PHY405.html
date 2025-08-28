@@ -1,35 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-  <title>Electronics Lab (PHY405) - Natalia Tabja</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../style_multi_light.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHY405 — Electronics Lab – Natalia Tabja</title>
+    <!--
+      This page follows the general structure used across the rest of the
+      portfolio.  It imports the shared light‑themed stylesheets from the
+      parent folder and reuses the nav bar markup found on other course
+      pages.  Only labs completed as part of PHY405 (Lab 1 through Lab 8)
+      are listed below; supplemental labs such as Lab S or Lab F are
+      intentionally omitted.  When placing this file in the `courses` folder
+      of your repository be sure that the relative paths (e.g. `../docs/…`)
+      correctly point to the PDFs in `docs/phy405`.
+    -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style_multi_light.css">
 </head>
 <body>
-<header class="navbar">
-  <div class="container">
-    <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
-    <button class="menu-toggle" aria-label="Menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="../index.html#coursework">Coursework</a></li>
-      <li><a href="../index.html#projects">Projects</a></li>
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="../index.html#research">Research</a></li>
-      <li><a href="../index.html#creative">Creative</a></li>
-    </ul>
-  </div>
-</header>  <section class="section" style="padding-top:7rem;">
+  <!-- Navigation bar -->
+  <header class="navbar">
     <div class="container">
-      <h2>Electronics Lab (PHY405)</h2>
-      <p class="category-tag">Category: Physics</p>
-      <p>Hands-on experience building and analyzing electronic circuits.</p>
-      <h3>Course Materials</h3>
-      <p>Lab notebooks, circuit diagrams and reports for Electronics Lab will be posted here.</p>
+      <div class="logo">
+        <a href="../index.html">Natalia <span class="accent">Tabja</span></a>
+      </div>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
+      </ul>
     </div>
-  </section>
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
-  <script src="../script.js" defer></script>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="course-title">PHY405 — Electronics Lab</h1>
+      <p class="course-subtitle">
+        Hands‑on experience building and analysing electronic circuits.
+      </p>
+
+      <div class="project-actions" style="margin-bottom:1rem;">
+        <a class="button button--ghost" href="../index.html#coursework">&larr; Back to Coursework</a>
+      </div>
+
+      <h2>Lab reports</h2>
+      <p>The following reports document the circuits built and experiments performed in PHY405.  Each link opens the corresponding PDF in a new tab.</p>
+      <ul class="labs-list">
+        <li><a href="../docs/phy405/Lab 1/PHY405_Lab_1.pdf" target="_blank" rel="noopener">Lab 1&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 2/PHY405_Lab_2.pdf" target="_blank" rel="noopener">Lab 2&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 3/PHY405_Lab_3.pdf" target="_blank" rel="noopener">Lab 3&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 4/PHY405_Lab_4.pdf" target="_blank" rel="noopener">Lab 4&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 5/PHY405_Lab_5.pdf" target="_blank" rel="noopener">Lab 5&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 6/PHY405_Lab_6.pdf" target="_blank" rel="noopener">Lab 6&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 7/PHY405_Lab_7.pdf" target="_blank" rel="noopener">Lab 7&nbsp;(PDF)</a></li>
+        <li><a href="../docs/phy405/Lab 8/PHY405_Lab_8.pdf" target="_blank" rel="noopener">Lab 8&nbsp;(PDF)</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy;&nbsp;2025&nbsp;Natalia Tabja. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Include interactivity (e.g. menu toggle and theme injection) -->
+  <script src="../script.js"></script>
 </body>
 </html>
