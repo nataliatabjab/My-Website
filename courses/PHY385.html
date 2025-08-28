@@ -1,31 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optics (PHY385) – Natalia Tabja</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PHY385 — Optics (Coursework)</title>
+
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style_multi_light.css">
+  <!-- script.js not required here, but safe to include if you want shared helpers -->
+  <!-- <script defer src="../script.js"></script> -->
 </head>
 <body>
-  <nav class="navbar">
+  <!-- Navbar -->
+  <header class="navbar">
     <div class="container">
-      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
       </ul>
     </div>
-  </nav>
-  <section class="section" style="padding-top:7rem;">
+  </header>
+
+  <main class="section">
     <div class="container">
-      <h2>Optics (PHY385)</h2>
-      <p class="category-tag">Category: Physics</p>
-      <p>Geometrical and physical optics, interference, diffraction and polarization.</p>
-      <h3>Course Materials</h3>
-      <p>Lab notes, problem sets and visual aids for Optics will be shared here.</p>
+      <h1 class="course-title">PHY385 — Optics</h1>
+      <p class="course-subtitle">
+        Geometrical & physical optics: interference, diffraction, polarization, thin films; lab work with data analysis and
+        small scripts for parameter extraction and plotting.
+      </p>
+
+      <!-- Actions -->
+      <div class="project-actions" style="margin-bottom:1rem;">
+        <a class="button button--ghost" href="../index.html#coursework">← Back to Coursework</a>
+      </div>
+
+      <!-- Optional hero figure: swap or remove the preview as you like -->
+      <!-- <figure class="embed figure-narrow">
+        <img
+          src="../images/courses/phy385/preview.png"
+          alt="PHY385 optics lab preview"
+          loading="lazy" decoding="async"
+          style="width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>Selected figures from PHY385 labs (thin-film interference, Brewster angle, diffraction).</figcaption>
+      </figure> -->
+
+      <!-- Labs quick list -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Lab Reports</h2>
+        <ul class="file-list">
+          <li>
+            <a href="../docs/phy385/PHY385_Lab_1.pdf" target="_blank" rel="noopener">Lab 1 — Experimental Investigations with Polarizers and Waveplates (PDF)</a>
+          </li>
+          <li>
+            <a href="../docs/phy385/PHY385_Lab_2.pdf" target="_blank" rel="noopener">Lab 2 — Investigating Interference with a Michelson Interferometer (PDF)</a>
+          </li>
+          <li>
+            <a href="../docs/phy385/PHY385_Lab_3.pdf" target="_blank" rel="noopener">Lab 3 — Experiments to Determine the Wavelength of a HeNe Laser (PDF)</a>
+          </li>
+          <li>
+            <a href="../docs/phy385/PHY385_Lab_4.pdf" target="_blank" rel="noopener">Lab 4 — Measurement of Glass Plate Thickness and Refractive Index
+using Brewster’s Angle and Two-Beam Interference (PDF)</a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Inline preview (optional): show one representative PDF -->
+      <figure class="embed figure-narrow">
+        <iframe
+          src="../docs/phy385/PHY385_Lab_4.pdf"
+          title="Lab 4 Preview"
+          allow="autoplay">
+        </iframe>
+        <figcaption>Inline preview: Lab 4 (open others from the list above).</figcaption>
+      </figure>
+
+      <!-- Scripts used -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Analysis Scripts</h2>
+        <ul class="file-list">
+          <li><a href="../docs/phy385/brewsters.py" download>brewsters.py</a> — fits reflected intensity vs. incidence angle to estimate Brewster angle.</li>
+          <li><a href="../docs/phy385/thickness.py" download>thickness.py</a> — computes thin-film thickness from interference minima/maxima.</li>
+          <li><a href="../docs/phy385/lab4_analysis.pde" download>lab4_analysis.pde</a> — Processing sketch for Lab 4 figure generation.</li>
+        </ul>
+      </section>
+
+      <!-- Takeaways -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="bullets">
+          <li>Estimated Brewster angle and derived refractive index with uncertainty propagation.</li>
+          <li>Extracted thin-film thickness from interference fringes (air/film/substrate model).</li>
+          <li>Connected diffraction patterns to aperture geometry; compared measured vs. theoretical intensities.</li>
+        </ul>
+      </section>
     </div>
-  </section>
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2025 Natalia Tabja.</p></div>
+  </footer>
 </body>
 </html>

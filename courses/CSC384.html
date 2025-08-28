@@ -1,36 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artificial Intelligence (CSC384) – Natalia Tabja</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSC384 — Introduction to Artificial Intelligence</title>
+
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style_multi_light.css">
+  <!-- script.js is optional here -->
 </head>
 <body>
-  <!-- Navigation back to home and coursework -->
-  <nav class="navbar">
+  <!-- Navbar -->
+  <header class="navbar">
     <div class="container">
-      <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#coursework">Coursework</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#creative">Creative</a></li>
       </ul>
     </div>
-  </nav>
-  <section class="section" style="padding-top:7rem;">
+  </header>
+
+  <main class="section">
     <div class="container">
-      <h2>Artificial Intelligence (CSC384)</h2>
-      <p class="category-tag">Category: Computer Science</p>
-      <p>Search algorithms, reasoning, constraint satisfaction, and machine learning basics.</p>
-      <h3>Course Materials</h3>
-      <p>Materials such as problem sets, projects and notes for Artificial Intelligence will appear here. In the meantime you can explore course resources once available.</p>
+      <h1 class="course-title">CSC384 — Introduction to Artificial Intelligence</h1>
+      <p class="course-subtitle">
+        Core AI topics with hands-on assignments: search (uninformed & informed), constraint satisfaction,
+        adversarial games, and probabilistic reasoning. Includes autograders, unit tests, and interactive code.
+      </p>
+
+      <div class="project-actions" style="margin-bottom:1rem;">
+        <a class="button button--ghost" href="../index.html#coursework">← Back to Coursework</a>
+      </div>
+
+      <!-- Optional hero figure (remove if you don't have an image yet) -->
+      <!--
+      <figure class="embed figure-narrow">
+        <img src="../images/courses/csc384/preview.png" alt="CSC384 preview" loading="lazy" decoding="async"
+             style="width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow);">
+        <figcaption>Search, CSPs, game agents, and probabilistic reasoning.</figcaption>
+      </figure>
+      -->
+
+      <!-- Assignments as native accordions (no JS needed) -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Assignments</h2>
+
+        <!-- A1 -->
+        <details class="accordion" open>
+          <summary><strong>A1 — State-Space Search (Sokoban & search algorithms)</strong></summary>
+          <p class="muted">Uniform-cost, A*, heuristics; autograder + starter code.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc384/A1/A1_handout.pdf" target="_blank" rel="noopener">A1 handout (PDF)</a></li>
+            <li><a href="../docs/csc384/A1/search.py" download>search.py</a> — search routines (UCS, A*, etc.)</li>
+            <li><a href="../docs/csc384/A1/sokoban.py" download>sokoban.py</a> — Sokoban domain</li>
+            <li><a href="../docs/csc384/A1/autograder.py" download>autograder.py</a> — local grading script</li>
+            <li><a href="../docs/csc384/A1/solution.py" download>solution.py</a> (plus variants if you keep them)</li>
+          </ul>
+          <!-- Inline preview example (optional) -->
+          <!--
+          <figure class="embed figure-narrow">
+            <iframe src="../docs/csc384/A1/A1_handout.pdf" title="A1 handout" allow="autoplay"></iframe>
+            <figcaption>A1 handout preview.</figcaption>
+          </figure>
+          -->
+        </details>
+
+        <!-- A2 -->
+        <details class="accordion">
+          <summary><strong>A2 — Constraint Satisfaction (CSPs)</strong></summary>
+          <p class="muted">Backtracking, propagation (e.g., Revise/AC-3), heuristics; full test suite.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc384/A2/A2_handout.pdf" target="_blank" rel="noopener">A2 handout (PDF)</a></li>
+            <li><a href="../docs/csc384/A2/csp/cspbase.py" download>cspbase.py</a> — variables, domains, constraints</li>
+            <li><a href="../docs/csc384/A2/csp/propagators.py" download>propagators.py</a> — FC/AC-3, etc.</li>
+            <li><a href="../docs/csc384/A2/csp/puzzle_csp.py" download>puzzle_csp.py</a> — example models</li>
+            <li><a href="../docs/csc384/A2/csp/csp_tests.py" download>csp_tests.py</a> — provided tests</li>
+            <!-- add others you want public (manual_tests.py, extra_tests.py, etc.) -->
+          </ul>
+        </details>
+
+        <!-- A3 -->
+        <details class="accordion">
+          <summary><strong>A3 — Adversarial Search (Othello / Reversi agent)</strong></summary>
+          <p class="muted">Minimax/alpha-beta, evaluation heuristics, robustness tests, GUI for play.</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc384/A3/csc384_A3_handout.pdf" target="_blank" rel="noopener">A3 handout (PDF)</a></li>
+            <li><a href="../docs/csc384/A3/starter/agent.py" download>agent.py</a> — your agent entry point</li>
+            <li><a href="../docs/csc384/A3/starter/othello_game.py" download>othello_game.py</a> — game logic</li>
+            <li><a href="../docs/csc384/A3/starter/othello_gui.py" download>othello_gui.py</a> — simple GUI</li>
+            <li><a href="../docs/csc384/A3/starter/robust_tests.py" download>robust_tests.py</a> — stress tests</li>
+            <!-- include other helpers you want visible (heuristic_test.py, etc.) -->
+          </ul>
+        </details>
+
+        <!-- A4 -->
+        <details class="accordion">
+          <summary><strong>A4 — Probabilistic Reasoning / Final</strong></summary>
+          <p class="muted">Short report + solutions (if shareable publicly).</p>
+          <ul class="file-list">
+            <li><a href="../docs/csc384/A4/A4_handout.pdf" target="_blank" rel="noopener">A4 handout (PDF)</a></li>
+            <li><a href="../docs/csc384/A4/answers.pdf" target="_blank" rel="noopener">answers.pdf</a></li>
+            <li><a href="../docs/csc384/A4/csc384_a4_modified.tex" download>csc384_final_simplified.tex</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- Takeaways -->
+      <section class="section" style="padding-top:1rem;">
+        <h2 class="section-title">Highlights</h2>
+        <ul class="bullets">
+          <li>Implemented A*, UCS, and domain heuristics; profiled node expansions.</li>
+          <li>Built CSP solvers with inference (FC / AC-3) and MRV/degree/value ordering.</li>
+          <li>Wrote an Othello agent with minimax + alpha-beta + custom evaluation.</li>
+          <li>Produced clean tests, autograding harnesses, and reproducible runs.</li>
+        </ul>
+      </section>
     </div>
-  </section>
+  </main>
+
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Natalia Tabja. All rights reserved.</p>
-    </div>
+    <div class="container"><p>&copy; 2025 Natalia Tabja.</p></div>
   </footer>
 </body>
 </html>

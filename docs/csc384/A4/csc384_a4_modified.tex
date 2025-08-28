@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\title{CSC384 Assignment 4}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1}
+
+\subsection*{(a) A counter--example model for $\Phi$}
+
+Let $\mathcal{M}$ be a structure whose domain contains exactly three elements
+\[D = \{a,b,c\}.
+\]
+Interpret the predicate $\mathit{Above}$ as the transitive closure of a single stack:
+\[
+\mathit{Above}^\mathcal{M} = \{(a,b),(b,c),(a,c)\}.
+\]
+In words, $a$ is above $b$, $b$ is above $c$, and by transitivity $a$ is also above $c$.
+The first three formulas in $\Phi$ only speak about the
+\textit{Above} predicate:
+
+\begin{itemize}
+  \item $\forall x\,\neg \mathit{Above}(x,x)$ requires $\mathit{Above}$ to be irreflexive;
+  \item $\forall x\,\forall y\,\forall z\,((\mathit{Above}(x,y) \wedge \mathit{Above}(x,z) \wedge y\neq z) \to (\mathit{Above}(z,y) \vee \mathit{Above}(y,z)))$ says that if $x$ is above two distinct elements then those two elements are comparable;
+  \item $\forall x\,\forall y\,\forall z\,((\mathit{Above}(x,y) \wedge \mathit{Above}(y,z))\to \mathit{Above}(x,z))$ asserts transitivity.
+\end{itemize}
+The relation $\mathit{Above}^\mathcal{M}$ defined above is irreflexive, linearly orders the elements below each block and is transitive, so $\mathcal{M}\models\Phi$.
+
+The remaining predicates $\mathit{Under},\mathit{Clear}$ and $\mathit{OnTable}$ do not occur in $\Phi$, so they can be interpreted arbitrarily.  To violate the English definition of $\mathit{Under}$, pick
+\[\mathit{Under}^\mathcal{M} = \{(c,a)\}.
+\]
+According to the informal description, $\mathit{Under}(y,x)$ should hold exactly when $x$ is the unique block immediately above $y$, or $x$ sits on the table (i.e., has no blocks underneath it) and $y{=}x$.
+In the present model $c$ is under $b$ and $b$ is under $a$, so there is no block immediately above $c$ other than $b$.
+However $\mathit{Under}^\mathcal{M}$ falsely declares $c$ to be under $a$ even though $b$ sits between them.  This mis–interpretation of $\mathit{Under}$ shows that although $\mathcal{M}$ satisfies $\Phi$ it does not reflect the intended English meaning.
+
+\subsection*{(b) Enforcing the intended meanings of \textit{Under}, \textit{Clear}, and \textit{OnTable}}
+
+To ensure that all models of the theory match the natural-language definitions of the predicates, augment $\Phi$ with sentences capturing those definitions using only the given vocabulary.
+
+The predicate $\mathit{Under}(y,x)$ is intended to hold exactly when either $x$ is the unique block immediately above $y$, or $x$ has nothing underneath it and $y = x$. This can be enforced with the following two formulas:
+\begin{align*}
+\forall x\,\forall y\,\bigl(\mathit{Under}(y,x) &\leftrightarrow \mathit{Above}(x,y)\;\wedge\; \neg\exists z\,\bigl((z \neq x) \wedge \mathit{Above}(z,y) \wedge \neg \mathit{Above}(z,x)\bigr)\bigr), \\
+\forall x\,\bigl(\mathit{Under}(x,x) &\leftrightarrow \mathit{OnTable}(x)\bigr).
+\end{align*}
+
+The predicate $\mathit{Clear}(x)$ is intended to hold when no block sits above $x$, and $\mathit{OnTable}(x)$ when $x$ sits on no blocks. These meanings are captured by the bi-implications:
+\[
+\forall x\,\bigl(\mathit{Clear}(x) \leftrightarrow \neg\exists y\,\mathit{Above}(y,x)\bigr),
+\qquad
+\forall x\,\bigl(\mathit{OnTable}(x) \leftrightarrow \neg\exists y\,\mathit{Above}(x,y)\bigr).
+\]
+
+Adding these sentences to $\Phi$ yields a new theory $\Phi'$ whose models are precisely those in which $\mathit{Above}$ is a finite stacking relation, and $\mathit{Under}$, $\mathit{Clear}$, and $\mathit{OnTable}$ behave according to their intended meanings.
+
+\section*{Question 2}
+
+Let $\Psi$ denote the set of sentences (\ref{eq:between1})–(\ref{eq:between5}) below, where $\mathit{between}$ is a ternary relation.  We will argue that $\Psi$ is inconsistent.
+
+\begin{align}
+&\forall x\,\forall y\,\forall z\bigl(\mathit{between}(x,y,z) \to \mathit{between}(z,y,x)\bigr),\label{eq:between1}\\
+&\forall x\,\forall y\,\forall z\bigl((\mathit{between}(x,y,z) \wedge \mathit{between}(y,x,z)) \to x=y\bigr),\label{eq:between2}\\
+&\forall x\,\forall y\,\forall z\,\forall w\bigl(\mathit{between}(y,x,z) \to (\mathit{between}(y,x,w) \lor \mathit{between}(z,x,w))\bigr),\label{eq:between3}\\
+&\forall x\,\forall y\,\forall z\bigl(\mathit{between}(y,x,z) \lor \mathit{between}(z,y,x) \lor \mathit{between}(x,z,y)\bigr),\label{eq:between4}\\
+&\forall x\,\forall y\,\forall z\bigl(\mathit{between}(x,y,z) \to \neg\mathit{between}(y,x,z)\bigr).
+\label{eq:between5}
+\end{align}
+
+\subsection*{Unsatisfiability of $\Psi$}
+
+Consider any structure $\mathcal{N}$ with domain $D$ interpreting $\mathit{between}$.  Take an arbitrary element $d\in D$ and instantiate $x=y=z=d$ in formula~\eqref{eq:between4}.  Because all three disjuncts in~\eqref{eq:between4} collapse to the single atom $\mathit{between}(d,d,d)$, the disjunction forces $\mathit{between}(d,d,d)$ to hold.  But then formula~\eqref{eq:between5} applied to the same triple says
+\[
+\mathit{between}(d,d,d) \to \neg\mathit{between}(d,d,d),
+\]
+a contradiction.  Since $d$ was arbitrary, no interpretation can satisfy all five sentences simultaneously.  Therefore $\Psi$ is unsatisfiable.
+
+\subsection*{Two satisfiable modifications}
+
+Although $\Psi$ is inconsistent, small changes yield theories that admit natural models.
+
+\paragraph{First modification: drop formula~\eqref{eq:between4}.}
+Let $\Psi_1$ be obtained by omitting~\eqref{eq:between4}.  Take as the domain a finite totally ordered set, for example $D_1=\{0,1,2\}$ with the usual order $0<1<2$.  Define $\mathit{between}^{\mathcal{N}_1}(x,y,z)$ to mean that $y$ lies strictly between $x$ and $z$ in this order:
+\[
+\mathit{between}^{\mathcal{N}_1}(x,y,z)\quad\text{iff}\quad (x<y<z)\;\lor\;(z<y<x).
+\]
+For triples with repeated elements we take $\mathit{between}$ to be false.  We now verify that axioms~\eqref{eq:between1}, \eqref{eq:between2}, \eqref{eq:between3} and \eqref{eq:between5} hold for $\mathcal{N}_1$:
+\begin{itemize}
+  \item \textbf{Symmetry \eqref{eq:between1}.}  If $y$ lies strictly between $x$ and $z$ in the total order, then the same configuration holds when $x$ and $z$ are interchanged, so $\mathit{between}(x,y,z)$ implies $\mathit{between}(z,y,x)$.
+  \item \textbf{Anti--symmetry \eqref{eq:between5}.}  In our interpretation there is no triple of distinct elements such that one element lies strictly between the other two in both directions.  Consequently, if $\mathit{between}(x,y,z)$ holds then $\mathit{between}(y,x,z)$ is false.
+  \item \textbf{Uniqueness \eqref{eq:between2}.}  This formula asserts that two distinct elements cannot both lie between each other and a common third element.  In a linear order, a point cannot simultaneously be between $y$ and $z$ and also have $y$ between it and $z$, so if both $\mathit{between}(x,y,z)$ and $\mathit{between}(y,x,z)$ held we would have $x=y$.
+  \item \textbf{Ray property \eqref{eq:between3}.}  If $x$ lies strictly between $y$ and $z$ in the order, then for any element $w$ either $w$ lies to the same side of $x$ as $y$ or to the same side as $z$.  In the first case $\mathit{between}(y,x,w)$ holds; in the second case $\mathit{between}(z,x,w)$ holds.
+\end{itemize}
+Since each axiom holds under this interpretation, the modified theory $\Psi_1$ is satisfiable.
+
+\paragraph{Second modification: restrict formula~\eqref{eq:between5} to distinct variables.}
+Define $\Psi_2$ to be the theory obtained by replacing~\eqref{eq:between5} with
+\begin{equation}
+\forall x\,\forall y\,\forall z\bigl((x\neq y \wedge y\neq z) \to (\mathit{between}(x,y,z) \to \neg\mathit{between}(y,x,z))\bigr).
+\label{eq:between5prime}
+\end{equation}
+Using the same ordered set $D_2=\{0,1,2\}$, interpret $\mathit{between}$ to be true either when $y$ is strictly between $x$ and $z$ or when two of the arguments coincide:
+\[
+\mathit{between}^{\mathcal{N}_2}(x,y,z)\quad\text{iff}\quad (x<y<z)\lor(z<y<x)\lor(y=x)\lor(y=z).
+\]
+With this definition, every ordered triple of distinct elements has exactly one element between the other two, while triples with repeated elements satisfy the disjunction in~\eqref{eq:between4} because $y=x$ or $y=z$.
+
+We now verify that axioms~\eqref{eq:between1}--\eqref{eq:between4} and~\eqref{eq:between5prime} hold for $\mathcal{N}_2$:
+
+\begin{itemize}
+  \item \textbf{Symmetry \eqref{eq:between1}.}  If $\mathit{between}(x,y,z)$ holds, then either $y$ is strictly between $x$ and $z$ in the order or $y$ coincides with $x$ or $z$.  In all of these cases interchanging $x$ and $z$ leaves the relation true, so $\mathit{between}(z,y,x)$ also holds.
+  \item \textbf{Anti--symmetry \eqref{eq:between5prime}.}  When $x=y$ or $y=z$ the implication in~\eqref{eq:between5prime} holds vacuously.  Otherwise, suppose $x\neq y$ and $y\neq z$ and $\mathit{between}(x,y,z)$ holds.  Then $y$ lies strictly between $x$ and $z$ in the total order, and it is impossible for $x$ to lie strictly between $y$ and $z$; hence $\mathit{between}(y,x,z)$ is false and the implication holds.
+  \item \textbf{Uniqueness \eqref{eq:between2}.}  If both $\mathit{between}(x,y,z)$ and $\mathit{between}(y,x,z)$ hold, either $y=x$ or $x$ lies strictly between $y$ and $z$ while also $y$ lies strictly between $x$ and $z$, which cannot happen in a total order.  Thus $x=y$.
+  \item \textbf{Ray property \eqref{eq:between3}.}  Suppose $\mathit{between}(y,x,z)$ holds; then $x$ lies strictly between $y$ and $z$.  For any element $w$, either $w$ lies to one side of $x$ with $y$ or lies to the other side with $z$, so $x$ will be between $y$ and $w$ or between $z$ and $w$.
+  \item \textbf{Coverage \eqref{eq:between4}.}  For any $x,y,z$ we must have either $x=y$, $y=z$, or the three elements are distinct.  If two are equal, the corresponding disjunct holds because our interpretation makes $\mathit{between}(x,y,z)$ true when $y=x$ or when $y=z$.  If all three are distinct, there is exactly one element strictly between the other two, so one of the disjuncts of~\eqref{eq:between4} is satisfied.
+\end{itemize}
+
+Since each axiom holds under this interpretation, the modified theory $\Psi_2$ is satisfiable.
+
+\section*{Question 3}
+
+For each sentence below we construct a structure that falsifies that sentence while making the other two sentences true.  In all interpretations $P$ is a binary relation and $a,b$ are constants in the domain.
+
+\subsection*{(a) $\forall x\,\forall y\,\forall z\,[P(x,y)\wedge P(y,z)\to P(x,z)]$ is false but the other two sentences are true}
+
+Let $\mathcal{M}_1$ have domain $D_1=\{u,v,w\}$, interpret the constants as $a:=w$ and $b:=w$, and take
+\[
+P^{\mathcal{M}_1} = \{(u,v),\,(v,w)\}.
+\]
+The relation $P$ contains $P(u,v)$ and $P(v,w)$ but not $P(u,w)$, so transitivity fails, making the first sentence false.  The second sentence $\forall x\,\forall y[(P(x,y)\wedge P(y,x))\to x=y]$ requires antisymmetry.  There are no pairs $(x,y)$ and $(y,x)$ with $x\neq y$ in $P^{\mathcal{M}_1}$, hence it holds vacuously.  The third sentence
+\[
+\forall x\,\forall y\bigl(P(a,y)\to P(x,b)\bigr)
+\]
+is also satisfied:  by choosing $a$ and~$b$ both to be $w$, the antecedent $P(a,y)$ is always false because there are no tuples of the form $(w,y)$ in $P^{\mathcal{M}_1}$, so the implication is true for all $x,y$.
+
+\subsection*{(b) $\forall x\,\forall y\,[(P(x,y)\wedge P(y,x))\to x=y]$ is false but the other two sentences are true}
+
+Let $D_2=\{u,v\}$ and interpret the constants as $a:=u$ and $b:=u$.  Set
+\[
+P^{\mathcal{M}_2} = \{(u,u),(u,v),(v,u),(v,v)\},
+\]
+the universal relation on $D_2$.  Because both $P(u,v)$ and $P(v,u)$ hold with $u\neq v$, the antisymmetry sentence is false.  To verify that the transitivity sentence holds, note that for every triple $(x,y,z)\in D_2^3$ we have $P(x,y)$ and $P(y,z)$, and we need to check that $P(x,z)$ also holds.  We enumerate the eight possible triples and see that the conclusion $P(x,z)$ is indeed in $P^{\mathcal{M}_2}$:
+\begin{itemize}
+  \item $(x,y,z)=(u,u,u)$: $P(u,u)$ and $P(u,u)$ hold and $P(u,u)$ holds.
+  \item $(u,u,v)$: $P(u,u)$ and $P(u,v)$ hold and $P(u,v)$ holds.
+  \item $(u,v,u)$: $P(u,v)$ and $P(v,u)$ hold and $P(u,u)$ holds.
+  \item $(u,v,v)$: $P(u,v)$ and $P(v,v)$ hold and $P(u,v)$ holds.
+  \item $(v,u,u)$: $P(v,u)$ and $P(u,u)$ hold and $P(v,u)$ holds.
+  \item $(v,u,v)$: $P(v,u)$ and $P(u,v)$ hold and $P(v,v)$ holds.
+  \item $(v,v,u)$: $P(v,v)$ and $P(v,u)$ hold and $P(v,u)$ holds.
+  \item $(v,v,v)$: $P(v,v)$ and $P(v,v)$ hold and $P(v,v)$ holds.
+\end{itemize}
+Thus the implication $P(x,y)\wedge P(y,z)\to P(x,z)$ is satisfied in every case.  For the third sentence recall that $a=b=u$.  Since $P$ is universal, $P(a,y)$ holds for both $y=u$ and $y=v$, and for every $x\in\{u,v\}$ the relation $P(x,b)$ also holds.  For example, when $y=u$ we have $P(a,u)$ and $P(u,b)$ for $x=u$ and $P(v,b)$ for $x=v$; when $y=v$ we have $P(a,v)$ and $P(u,b)$ or $P(v,b)$.  In all cases the implication $P(a,y)\to P(x,b)$ holds.  Hence $\mathcal{M}_2$ makes the transitivity and third sentences true and the antisymmetry sentence false.
+
+\subsection*{(c) $\forall x\,\forall y\,[P(a,y)\to P(x,b)]$ is false but the other two sentences are true}
+
+Take $D_3=\{0,1,2\}$, interpret $a:=0$ and $b:=2$, and set
+\[
+P^{\mathcal{M}_3} = \{(0,1),(1,2),(0,2)\}.
+\]
+This relation is transitive and antisymmetric.  To verify transitivity, notice that the only non-vacuous chain in $P^{\mathcal{M}_3}$ is $0P1$ and $1P2$.  In this case $(x,y,z)=(0,1,2)$ satisfies $P(0,1)$ and $P(1,2)$, and the composite $P(0,2)$ also belongs to $P^{\mathcal{M}_3}$.  For all other triples $(x,y,z)\in D_3^3$ the antecedent $P(x,y)\wedge P(y,z)$ fails because at least one of $(x,y)$ or $(y,z)$ is not in $P^{\mathcal{M}_3}$, so the implication holds vacuously.  It is also antisymmetric because there are no pairs $(x,y)$ and $(y,x)$ with $x\neq y$ in $P^{\mathcal{M}_3}$.  However the implication $\forall x\,\forall y\,(P(a,y)\to P(x,b))$ is false.  Indeed, $P(a,1)$ holds since $(0,1)\in P^{\mathcal{M}_3}$, but $(2,b)$ is $(2,2)$, which does not belong to $P^{\mathcal{M}_3}$, so the conditional fails when $x=2$ and $y=1$.  Hence $\mathcal{M}_3$ makes the transitivity and antisymmetry sentences true and the third sentence false.
+
+\section*{References}
+
+For completeness we recall the standard definitions of the relational properties used above.  A binary relation $R$ on a set $X$ is called \emph{antisymmetric} if for all $a,b\in X$, whenever $aRb$ and $bRa$ then $a=b$; equivalently, if $aRb$ with $a\neq b$ then $bRa$ cannot hold.  A relation is \emph{transitive} when for all $a,b,c$ in $X$, $aRb$ and $bRc$ imply $aRc$.  These definitions justify our use of transitivity and antisymmetry in the arguments above.
+
+\end{document}

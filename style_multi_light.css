@@ -240,6 +240,18 @@ svg .tick text{ fill: var(--colour-subtle); }
   margin: 1rem auto;
 }
 
+.accordion { border: 1px solid var(--colour-border); border-radius: var(--radius); padding: .75rem 1rem; background: var(--colour-card); box-shadow: var(--shadow-soft); margin-bottom: .75rem; }
+.accordion > summary { cursor: pointer; font-weight: 600; }
+.accordion[open] { box-shadow: var(--shadow); }
+
+/* Neat lists for files / bullets */
+.file-list { margin: .5rem 0 0; padding-left: 1.1rem; }
+.file-list li { margin: .3rem 0; }
+
+.bullets { margin: .5rem 0 0; padding-left: 1.1rem; }
+.bullets li { margin: .25rem 0; }
+
+.muted { color: var(--colour-subtle); margin: .25rem 0 .5rem; }
 
 /* ===== 9) CREATIVE GALLERY (card grid like projects) =================== */
 
