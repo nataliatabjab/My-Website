@@ -21,27 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Data definitions */
   const courses = [
     { title: 'Artificial Intelligence', code: 'CSC384', category: 'Computer Science', description: 'Search algorithms, reasoning, constraint satisfaction, and machine learning basics.' },
-    { title: 'Calculus', code: 'MAT137/MAT235', category: 'Mathematics', description: 'Differential and integral calculus of one and several variables with applications.' },
-    { title: 'Classical Mechanics', code: 'PHY254/354', category: 'Physics', description: 'Newtonian mechanics, Lagrangian and Hamiltonian formalisms and rigid body motion.' },
+    { title: 'Calculus', code: 'MAT137/MAT235', category: 'Mathematics', description: 'Differential and integral calculus of one and several variables with applications.', weight: 2 },
+    { title: 'Classical Mechanics', code: 'PHY254/354', category: 'Physics', description: 'Newtonian mechanics, Lagrangian and Hamiltonian formalisms and rigid body motion.', weight: 2 },
     { title: 'Computational Physics', code: 'PHY407', category: 'Physics', description: 'Numerical methods and scientific computing applied to physical systems.' },
-    { title: 'Computer Science/Programming', code: 'CSC108/CSC148', category: 'Computer Science', description: 'Introduction to programming, data types, recursion and data abstraction.' },
+    { title: 'Computer Science/Programming', code: 'CSC108/CSC148', category: 'Computer Science', description: 'Introduction to programming, data types, recursion and data abstraction.', weight: 2 },
     { title: 'Data Structures & Analysis', code: 'CSC263', category: 'Computer Science', description: 'Design and analysis of data structures and algorithms.' },
-    { title: 'Electricity & Magnetism', code: 'PHY250/350', category: 'Physics', description: 'Electrostatics, magnetostatics, Maxwell’s equations and electromagnetic waves.' },
-    { title: 'Electronics Lab', code: 'PHY405', category: 'Physics', description: 'Hands‑on experience building and analyzing electronic circuits.' },
-    { title: 'Interactive Computational Media', code: 'CSC318', category: 'Computer Science', description: 'Human‑computer interaction and interactive media design.' },
+    { title: 'Electricity & Magnetism', code: 'PHY250/350', category: 'Physics', description: 'Electrostatics, magnetostatics, Maxwell’s equations and electromagnetic waves.', weight: 2 },
+    { title: 'Electronics Lab', code: 'PHY405', category: 'Physics', description: 'Hands-on experience building and analyzing electronic circuits.' },
+    { title: 'Interactive Computational Media', code: 'CSC318', category: 'Computer Science', description: 'Human-computer interaction and interactive media design.' },
     { title: 'Linear Algebra', code: 'MAT223', category: 'Mathematics', description: 'Vector spaces, linear transformations, eigenvalues and eigenvectors.' },
     { title: 'Machine Learning', code: 'CSC311', category: 'Computer Science', description: 'Supervised and unsupervised learning, neural networks, optimisation.' },
     { title: 'Mathematical Expression & Reasoning for CS', code: 'CSC165', category: 'Computer Science', description: 'Logical reasoning, proof techniques and algorithmic correctness.' },
     { title: 'Optics', code: 'PHY385', category: 'Physics', description: 'Geometrical and physical optics, interference, diffraction and polarization.' },
     { title: 'Ordinary Differential Equations', code: 'MAT244', category: 'Mathematics', description: 'Linear ODEs, series solutions, Laplace transforms and applications.' },
     { title: 'Probability & Statistics', code: 'STA237', category: 'Mathematics', description: 'Random variables, distributions, estimation and hypothesis testing.' },
-    { title: 'Software Design', code: 'CSC207', category: 'Computer Science', description: 'Object‑oriented design principles, design patterns and software architectures.' },
+    { title: 'Software Design', code: 'CSC207', category: 'Computer Science', description: 'Object-oriented design principles, design patterns and software architectures.' },
     { title: 'Software Tools & Systems Programming', code: 'CSC209', category: 'Computer Science', description: 'Unix tools, shell programming, memory management and concurrency.' },
     { title: 'Thermal Physics', code: 'PHY252', category: 'Physics', description: 'Thermodynamics, statistical mechanics and kinetic theory.' },
     { title: 'Time Series Analysis', code: 'PHY408', category: 'Physics', description: 'Fourier analysis, stochastic processes and time series modelling.' },
     { title: 'Quantum Information', code: 'PHY365', category: 'Physics', description: 'Qubits, quantum gates, entanglement and quantum algorithms.' },
-    { title: 'Quantum Mechanics', code: 'PHY256/356', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.' },
+    { title: 'Quantum Mechanics', code: 'PHY256/356', category: 'Physics', description: 'Wave functions, Schrödinger equation and angular momentum.', weight: 2 },
   ];
+
 
   const projects = [
     {
@@ -245,7 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function getCategoryCounts() {
     const counts = {};
     courses.forEach(course => {
-      counts[course.category] = (counts[course.category] || 0) + 1;
+      const w = course.weight || 1;
+      counts[course.category] = (counts[course.category] || 0) + w;
     });
     return counts;
   }

@@ -328,7 +328,7 @@ svg .tick text{ fill: var(--colour-subtle); }
 .hero-media{width:100%;max-width:var(--content-max);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
 .meta{color:var(--colour-subtle);}
 
-/* ========================= 10) ACTION BARS ========================= */
+/* ========================= 10) ACTION & NAV BARS ========================= */
 
 /* unified action bar for projects, courses, research */
 .action-bar,
@@ -338,3 +338,17 @@ svg .tick text{ fill: var(--colour-subtle); }
   gap: .75rem;
   margin: 1rem 0 1.5rem;
 }
+
+/* Navbar brand — make it identical on all pages */
+.navbar .logo a{
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1.25rem;     /* keep consistent size */
+  letter-spacing: .2px;
+  text-decoration: none;
+  color: var(--colour-text);        /* black/charcoal */
+}
+.navbar .logo a:visited{ color: var(--colour-text); }   /* no visited purple */
+.navbar .logo a:hover{ color: var(--colour-text); }     /* base stays dark */
+.navbar .logo a .accent{ color: var(--colour-accent); font-weight: 700; }
+.navbar .logo a:hover .accent{ color: var(--colour-accent-hover); }
