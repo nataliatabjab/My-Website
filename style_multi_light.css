@@ -299,19 +299,6 @@ svg .tick text{ fill: var(--colour-subtle); }
 .gallery-item .meta h3{ margin: 0 0 .2rem; font-size: 1.05rem; }
 .gallery-item .meta p{ margin: 0; color: var(--colour-subtle); font-size: .9rem; }
 
-/* ===== Charts ===== */
-.chart-container {
-  display: flex;
-  justify-content: center;   /* center horizontally */
-  margin-top: 2rem;          /* space above chart */
-  margin-bottom: 1rem;       /* optional: space below */
-}
-
-#courseChart {
-  max-width: 100%;           /* responsive */
-  height: auto;
-}
-
 /* --- Creative pages: responsive gallery grid --- */
 .gallery{
   display:grid;
@@ -370,6 +357,10 @@ html, body {
   z-index: 1000;
   background: var(--colour-bg);
   border-bottom: 1px solid var(--colour-border);
+
+  /* Give space for iOS safe area */
+  padding-top: max(env(safe-area-inset-top), 8px);
+  padding-bottom: 8px;
 }
 
 /* Layout for the content inside the bar */
@@ -382,6 +373,7 @@ html, body {
   justify-content: space-between;
   gap: .75rem;
   min-width: 0;           /* prevents flex children forcing overflow */
+  flex-wrap: wrap;           /* allow two lines on mobile */
 }
 
 .logo a { display: inline-block; text-decoration: none; }
@@ -392,11 +384,53 @@ html, body {
   gap: 1rem;
   flex-wrap: wrap;        /* allow wrap on narrow screens */
   list-style: none;
-  margin: 0;
+  margin: 6px 0 0;
   padding: 0;
+  /* take full row under logo on phones */
+  flex: 1 1 100%;
 }
 .nav-links li a { white-space: nowrap; }
 
+@media (min-width: 640px){
+  .navbar .container{ flex-wrap: nowrap; }
+  .nav-links{ flex: 0 0 auto; margin-top: 0; }
+}
+
+/* Hamburger hidden on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* On small screens: show hamburger, hide links by default */
 @media (max-width: 640px){
-  .nav-links { row-gap: .5rem; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: .5rem;
+    background: var(--colour-bg);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--radius);
+    padding: .5rem;
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* =============== Charts =============== */
+
+.chart-container {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  margin-top: 2rem;          /* space above chart */
+  margin-bottom: 1rem;       /* optional: space below */
+}
+
+#courseChart {
+  max-width: 100%;           /* responsive */
+  height: auto;
 }

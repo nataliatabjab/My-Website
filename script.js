@@ -17,6 +17,17 @@
   link.href = 'style_multi_light.css';
 })();
 
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav-links");
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   /* Data definitions */
   const courses = [
@@ -90,14 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
       period: 'June 2023 – December 2024',
       description: 'Developed data pipelines and visual analytics tools for research projects spanning physics and biology. Collaborated with researchers to transform raw data into actionable insights.',
       tags: ['Python', 'Java', 'C++']
-    },
-    {
-      role: 'Teaching Assistant',
-      company: 'University of Toronto',
-      period: '2023 – 2024',
-      description: 'Assisted in the delivery of CSC148 (Introduction to Computer Science), holding office hours, marking assignments and running lab sessions.',
-      tags: ['Teaching', 'Python']
     }
+    // {
+    //   role: 'Teaching Assistant',
+    //   company: 'University of Toronto',
+    //   period: '2023 – 2024',
+    //   description: 'Assisted in the delivery of CSC148 (Introduction to Computer Science), holding office hours, marking assignments and running lab sessions.',
+    //   tags: ['Teaching', 'Python']
+    // }
   ];
 
   /* DOM references */
