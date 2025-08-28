@@ -261,48 +261,49 @@ svg .tick text{ fill: var(--colour-subtle); }
   color: var(--gold);
 }
 
-/* 2–4 columns depending on width */
+/* Masonry-style gallery using CSS columns */
 .gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+  column-width: 320px;            /* target column width, browser picks count */
+  column-gap: 1rem;               /* space between columns */
+  margin-top: 1rem;
 }
 
-/* Card container */
+/* Each card is an inline-block that avoids being split across columns */
 .gallery-item{
-  display: block;
+  display: inline-block;          /* required for column masonry */
+  width: 100%;
+  margin: 0 0 1rem;               /* vertical spacing between cards */
+  break-inside: avoid;            /* don't split the card */
   background: var(--colour-card);
   border: 1px solid var(--colour-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
 }
-
-/* Gold hover that matches the Research/Creative accent */
 .gallery-item:hover{
   border-color: rgba(227,194,42,.55);
   box-shadow: 0 10px 24px rgba(227,194,42,.15);
   transform: translateY(-1px);
 }
 
-/* Fixed-height thumbnail for consistent rows */
-.gallery-item .thumb{ height: 180px; background: #fff; }
-.gallery-item img{
-  width: 100%; height: 100%; display: block; object-fit: cover;
-}
-
-/* Title + caption area */
-.gallery-item .meta{ padding: .75rem .9rem; }
-.gallery-item .meta h3{ margin: 0 0 .2rem; font-size: 1.05rem; }
+/* Media + content inside each card */
+.gallery-item .thumb{ padding: .75rem .75rem 0; background: transparent; }
+.gallery-item img{ display:block; width:100%; height:auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+.gallery-item .meta{ padding: .75rem .9rem .9rem; }
+.gallery-item .meta h3{ margin: 0 0 .25rem; font-size: 1.05rem; }
 .gallery-item .meta p{ margin: 0; color: var(--colour-subtle); font-size: .9rem; }
 
-/* --- Creative pages: responsive gallery grid --- */
+/* Optional: tweak density on narrow screens */
+@media (max-width: 720px){
+  .gallery-grid{ column-width: 260px; column-gap: .8rem; }
+}
+
+/* --- Creative DETAIL pages (not the index grid) --- */
 .gallery{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap:1rem;
   margin-top:1rem;
 }
@@ -312,8 +313,19 @@ svg .tick text{ fill: var(--colour-subtle); }
   box-shadow:var(--shadow);
   background:var(--colour-card);
 }
-.hero-media{width:100%;max-width:var(--content-max);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;}
-.meta{color:var(--colour-subtle);}
+
+.hero-media{
+  width:100%;
+  max-width:var(--content-max);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:1rem;
+}
+
+.meta{ color:var(--colour-subtle); }
+
+/* If any page still has an inner .card, neutralise it so it doesn't add stray space */
+.gallery-item .card{ margin:0; padding:0; border:0; box-shadow:none; background:transparent; }
 
 /* ========================= 10) ACTION & NAV BARS ========================= */
 

@@ -13,9 +13,10 @@
 (function () {
   var link = document.createElement('link');
   link.rel = 'stylesheet';
-  // if style_multi_light.css is at repo root, use a root-relative URL:
   link.href = 'style_multi_light.css';
+  document.head.appendChild(link);  // <-- add this
 })();
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".menu-toggle");
@@ -109,6 +110,51 @@ document.addEventListener('DOMContentLoaded', () => {
     //   description: 'Assisted in the delivery of CSC148 (Introduction to Computer Science), holding office hours, marking assignments and running lab sessions.',
     //   tags: ['Teaching', 'Python']
     // }
+  ];
+
+  const creativeWorks = [
+    {
+      title: "Aston Martin AMR21",
+      slug: "aston-martin-f1-car",  // creative/aston-martin-f1-car.html
+      description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
+      tags: ["Drawing", "F1", "Colored Pencil"],
+      image: "images/creative/F1 Cars/aston_martin.jpg"
+    },
+    {
+      title: "Ferrari F2007",
+      slug: "ferrari-f2007",
+      description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
+      tags: ["Drawing", "F1", "Ferrari"],
+      image: "images/creative/F1 Cars/ferrari_f2007.jpg"
+    },
+    {
+      title: "Mark Knopfler",
+      slug: "mark-knopfler",
+      description: "Work-in-progress piece of Mark Knopfler playing guitar.",
+      tags: ["Drawing", "Portrait", "Music"],
+      image: "images/creative/Mark Knopfler/MK_1.jpeg"
+    },
+    {
+      title: "Epiphone Les Paul Special II",
+      slug: "guitar",
+      description: "My Epiphone Les Paul Special II electric guitar in vibrant hues.",
+      tags: ["Drawing", "Music", "Colored Pencil"],
+      image: "images/creative/Guitar/guitar.jpeg"
+    },
+    {
+      title: "Monstera Deliciosa",
+      slug: "monstera-deliciosa",
+      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
+      tags: ["Drawing", "Botanical", "Colored Pencil"],
+      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
+    },
+    {
+      title: "Tiger",
+      slug: "tiger",
+      description: "Hyperrealistic iPad drawing of a tiger, step-by-step process included. Done on the app 'Paper'.",
+      tags: ["Drawing", "Wildlife", "Colored Pencil"],
+      image: "images/creative/tiger/tiger.jpeg"
+    }
   ];
 
   /* DOM references */
@@ -262,79 +308,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     return counts;
   }
-
-    const creativeWorks = [
-    {
-      title: "Aston Martin AMR21",
-      slug: "aston-martin-f1-car",  // creative/aston-martin-f1-car.html
-      description: "Colored pencil drawing of the Aston Martin AMR21 Formula 1 car.",
-      tags: ["Drawing", "F1", "Colored Pencil"],
-      image: "images/creative/F1 Cars/aston_martin.jpg"
-    },
-    {
-      title: "Ferrari F2007",
-      slug: "ferrari-f2007",
-      description: "Detailed illustration of the iconic Ferrari F2007 Formula 1 car.",
-      tags: ["Drawing", "F1", "Ferrari"],
-      image: "images/creative/F1 Cars/ferrari_f2007.jpg"
-    },
-    {
-      title: "Mark Knopfler",
-      slug: "mark-knopfler",
-      description: "Work-in-progress piece of Mark Knopfler playing guitar.",
-      tags: ["Drawing", "Portrait", "Music"],
-      image: "images/creative/Mark Knopfler/MK_1.jpeg"
-    },
-    {
-      title: "Epiphone Les Paul Special II",
-      slug: "guitar",
-      description: "My Epiphone Les Paul Special II electric guitar in vibrant hues.",
-      tags: ["Drawing", "Music", "Colored Pencil"],
-      image: "images/creative/Guitar/guitar.jpeg"
-    },
-    {
-      title: "Monstera Deliciosa",
-      slug: "monstera-deliciosa",
-      description: "A botanical drawing of a Monstera Deliciosa with process shots.",
-      tags: ["Drawing", "Botanical", "Colored Pencil"],
-      image: "images/creative/Monstera Deliciosa/monstera.jpeg"
-    },
-    {
-      title: "Tiger",
-      slug: "tiger",
-      description: "Hyperrealistic iPad drawing of a tiger, step-by-step process included. Done on the app 'Paper'.",
-      tags: ["Drawing", "Wildlife", "Colored Pencil"],
-      image: "images/creative/tiger/tiger.jpeg"
-    }
-  ];
-
-
+  
   function renderCreative() {
     const container = document.getElementById('creative-list');
+    if (!container) return;
     container.innerHTML = '';
+
     creativeWorks.forEach(work => {
-      // Use explicit slug when provided; otherwise fallback to title slug
-      const slug = work.slug ?? work.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const slug = work.slug ?? work.title.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
       const link = document.createElement('a');
-      link.className = 'gallery-item';
+      link.className = 'gallery-item';           // this IS the card
       link.href = `creative/${slug}.html`;
-
-      const card = document.createElement('div');
-      card.className = 'card';
 
       if (work.image) {
         const thumb = document.createElement('div');
         thumb.className = 'thumb';
         const img = document.createElement('img');
-        // Encode to be safe with spaces/case-sensitive hosts
         img.src = encodeURI(work.image);
         img.alt = work.title;
         img.loading = 'lazy';
         img.decoding = 'async';
-        img.fetchPriority = 'low';
         thumb.appendChild(img);
-        card.appendChild(thumb);
+        link.appendChild(thumb);
       }
 
       const meta = document.createElement('div');
@@ -345,9 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
       p.textContent = work.description;
       meta.appendChild(h3);
       meta.appendChild(p);
-      card.appendChild(meta);
+      link.appendChild(meta);
 
-      link.appendChild(card);
       container.appendChild(link);
     });
   }
