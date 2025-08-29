@@ -102,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
       period: 'June 2023 – December 2024',
       description: 'Developed data pipelines and visual analytics tools for research projects spanning physics and biology. Collaborated with researchers to transform raw data into actionable insights.',
       tags: ['Python', 'Java', 'C++']
+    },
+    {
+      role: 'Research Assistant',
+      company: 'University of Toronto',
+      period: 'August 2025 - Present',
+      description: 'Assisting in the development of a cryogenic TDO system to study novel superconducting materials. The project is under the supervision of Dr. Stephen Julian at the University of Toronto.',
+      tags: ['Physics', 'Superconductors']
     }
-    // {
-    //   role: 'Teaching Assistant',
-    //   company: 'University of Toronto',
-    //   period: '2023 – 2024',
-    //   description: 'Assisted in the delivery of CSC148 (Introduction to Computer Science), holding office hours, marking assignments and running lab sessions.',
-    //   tags: ['Teaching', 'Python']
-    // }
   ];
 
   const creativeWorks = [
