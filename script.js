@@ -91,6 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
       tags: ['Physics', 'Numerical Methods'],
       link: 'projects/quantum-mechanics-simulator.html',
       image: null
+    },
+    {
+      title: 'Time Series Analysis — Atmospheric CO₂ & Temperature',
+      description: 'Detrending, seasonal filtering, spectral analysis, and lag estimation on CO₂ and global temperature.',
+      tags: ['Time Series', 'FFT', 'Filtering', 'Python'],
+      link: 'projects/global-warming.html',
+      image: 'images/projects/phy408/preview.png' // optional if you add a thumbnail
     }
   ];
 
