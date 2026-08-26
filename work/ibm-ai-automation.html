@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="description" content="IBM AI & Automation internship — agentic AI, cloud orchestration, and software-development workflows.">
+  <title>IBM AI & Automation – Natalia Tabja</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style_multi_light.css">
+  <style>
+    .case-study { max-width: 960px; margin: 0 auto; }
+    .case-study h1 { margin-bottom:.4rem; }
+    .case-study h2 { margin-top:2.3rem; }
+    .lede { font-size:1.08rem; line-height:1.7; }
+    .meta { opacity:.78; margin-bottom:1.7rem; }
+    .pill-row { display:flex; flex-wrap:wrap; gap:.55rem; margin:1.25rem 0 2rem; }
+    .pill { padding:.35rem .7rem; border:1px solid var(--colour-border); border-radius:999px; font-size:.9rem; }
+    .work-block { padding:1.25rem 1.4rem; border:1px solid var(--colour-border); border-radius:var(--radius); margin:1.2rem 0; }
+    .work-block h3 { margin-top:0; }
+    .back-link { display:inline-block; margin-bottom:1.2rem; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container case-study">
+      <a class="back-link" href="../index.html#work">← Back to work history</a>
+      <h1>Agentic AI & Multi-Agent Orchestration at IBM</h1>
+      <p class="meta">Data Scientist Intern · IBM AI & Automation · January–August 2026</p>
+      <p class="lede">During my internship at IBM, I worked on applied agentic-AI systems that connected tools, models, and cloud environments into larger orchestration workflows. My work spanned cross-cloud agent communication, authentication, deployment, debugging, and integrations for AI-assisted software-development workflows.</p>
+
+      <div class="pill-row">
+        <span class="pill">Python</span><span class="pill">Agentic AI</span><span class="pill">A2A</span><span class="pill">LangGraph</span><span class="pill">Azure AI Foundry</span><span class="pill">AWS Bedrock AgentCore</span><span class="pill">Azure Container Apps</span><span class="pill">Docker</span><span class="pill">Git</span>
+      </div>
+
+      <h2>Cross-cloud agent orchestration</h2>
+      <div class="work-block">
+        <h3>Connecting agents across cloud boundaries</h3>
+        <p>I contributed to a proof of concept for orchestrating agents hosted across different cloud ecosystems. The goal was to let agents running in environments such as Azure AI Foundry and AWS Bedrock participate in a shared workflow rather than remaining isolated inside a single vendor stack.</p>
+        <p>My work focused heavily on the AWS side and on authentication. I helped enable agent communication through the A2A protocol, worked through cloud/security boundaries, and supported knowledge-base integration on Azure so agents could access the context required for their tasks.</p>
+      </div>
+
+      <div class="work-block">
+        <h3>Deploying a LangGraph agent</h3>
+        <p>I containerized and deployed a LangGraph-based agent to Azure Container Apps, then tested service discovery, messaging, and Microsoft Entra ID authentication. This involved taking an agent from local development into a cloud-hosted environment where it could participate in the larger orchestration flow.</p>
+      </div>
+
+      <h2>Agentic workflows for the software-development lifecycle</h2>
+      <p>In the second half of the internship, I moved to a platform focused on orchestrating agents and automation across the software-development lifecycle. I contributed integrations that allowed coding-agent harnesses to participate in workflows for specification generation, code generation, and other development tasks.</p>
+
+      <div class="work-block">
+        <h3>Coding-agent integrations</h3>
+        <p>I worked on end-to-end integrations for tools including Claude Code and Gemini, and later contributed to additional coding-assistant integrations. The focus was not just invoking a model, but fitting each agent into the platform's broader workflow, inputs, outputs, and execution lifecycle.</p>
+      </div>
+
+      <div class="work-block">
+        <h3>Platform debugging and integration work</h3>
+        <p>I also contributed to platform-level testing and debugging, including reproducing workflow and database issues, validating autonomous-agent behaviour, and supporting integrations with external developer tools such as Bitbucket. This work required navigating an unfamiliar production codebase and tracing failures across multiple services.</p>
+      </div>
+
+      <h2>What I learned</h2>
+      <p>The internship gave me practical experience with a side of AI that is easy to miss in coursework: making multiple intelligent components actually work together reliably. I learned how much real-world agentic systems depend on authentication, APIs, deployment, observability, state, data access, and careful failure handling — not just model quality.</p>
+      <p>It also reinforced the kind of work I enjoy most: technical problem solving where AI is applied to a concrete operational or business goal, rather than treated as an isolated research object.</p>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><p>&copy; 2026 Natalia Tabja. All rights reserved.</p></div></footer>
+  <script src="../script.js" defer></script>
+</body>
+</html>
