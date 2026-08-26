@@ -11,7 +11,6 @@
     .case-study { max-width: 980px; margin: 0 auto; }
     .case-study h1 { margin-bottom: .4rem; }
     .case-study h2 { margin-top: 2.4rem; }
-    .case-study h3 { margin-top: 1.6rem; }
     .lede { font-size: 1.08rem; line-height: 1.7; }
     .meta { opacity: .78; margin-bottom: 1.8rem; }
     .result-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin:1.5rem 0 2rem; }
@@ -19,11 +18,16 @@
     .result strong { display:block; font-size:1.4rem; margin-bottom:.3rem; }
     figure { margin:2rem 0; }
     figure img { width:100%; height:auto; border-radius:var(--radius); display:block; }
-    figure.small img { max-width:720px; margin:auto; }
     figcaption { font-size:.92rem; opacity:.78; margin-top:.65rem; line-height:1.5; }
-    .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; align-items:start; }
+    .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; margin:1.4rem 0; }
+    .panel { padding:1.2rem 1.3rem; border:1px solid var(--colour-border); border-radius:var(--radius); }
+    .panel h3 { margin-top:0; }
     .callout { padding:1.2rem 1.4rem; border-left:4px solid var(--colour-accent); background:rgba(0,210,106,.06); border-radius:8px; margin:1.5rem 0; }
+    .signal-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:.5rem; align-items:center; margin:1.5rem 0; }
+    .signal-strip div { text-align:center; padding:.9rem .45rem; border:1px solid var(--colour-border); border-radius:10px; font-size:.9rem; }
+    .arrow { border:none !important; font-size:1.3rem !important; padding:.4rem 0 !important; }
     .back-link { display:inline-block; margin-bottom:1.2rem; }
+    @media (max-width:700px){ .signal-strip{grid-template-columns:1fr;} .arrow{transform:rotate(90deg);} }
   </style>
 </head>
 <body>
@@ -55,8 +59,8 @@
       </div>
 
       <figure>
-        <img src="../images/research/tdo/oscilloscope.jpeg" alt="Tektronix oscilloscope showing the measured TDO spectrum near 23 MHz">
-        <figcaption>Real measurement from the experimental setup. A narrow spectral feature appears near 23 MHz on the Tektronix mixed-domain oscilloscope.</figcaption>
+        <img src="../images/research/desk-setup-min.JPG" alt="Tunnel diode oscillator laboratory setup">
+        <figcaption>The experimental setup used to build, debug, and characterize the cryogenic tunnel-diode oscillator.</figcaption>
       </figure>
 
       <h2>Why build a TDO?</h2>
@@ -65,42 +69,39 @@
 
       <h2>What I built</h2>
       <div class="two-col">
-        <figure>
-          <img src="../images/research/tdo/circuit-illustration.png" alt="Exploded illustration of the three-tier cryogenic TDO stage">
-          <figcaption>The low-temperature assembly uses a three-tier copper stage. The top tier carries the tunnel diode and bias network, the middle tier provides shielding, and the bottom tier carries the LC tank.</figcaption>
-        </figure>
-        <div>
-          <p>The low-temperature oscillator was constructed around a hand-wound copper coil and NP0/C0G capacitors chosen for low temperature drift. The tunnel diode was mechanically protected in a brass sleeve and thermally anchored to the copper stage.</p>
-          <p>The room-temperature electronics provide DC bias and process the RF signal using low-noise amplification, frequency mixing, band-pass filtering, and spectrum measurement.</p>
+        <div class="panel">
+          <h3>Low-temperature oscillator</h3>
+          <p>A hand-wound ~0.36 µH copper coil and 124 pF tank capacitance form the LC resonator. The tunnel diode supplies effective negative resistance to compensate circuit losses and sustain oscillation.</p>
+        </div>
+        <div class="panel">
+          <h3>Cryogenic mechanical stage</h3>
+          <p>The components were mounted on a three-tier copper assembly: the top tier carried the tunnel diode and bias network, the middle tier provided electromagnetic shielding, and the lowest tier carried the LC tank.</p>
+        </div>
+        <div class="panel">
+          <h3>Room-temperature signal chain</h3>
+          <p>The returning RF signal was amplified, mixed with a 14 MHz local oscillator, band-pass filtered, and measured on a Tektronix MDO3034 mixed-domain oscilloscope.</p>
+        </div>
+        <div class="panel">
+          <h3>Tunnel-diode characterization</h3>
+          <p>I measured the I–V characteristic at room temperature and 77 K and extracted negative differential resistances of roughly −307 Ω and −273 Ω, respectively.</p>
         </div>
       </div>
-
-      <figure class="small">
-        <img src="../images/research/tdo/low-temp-circuit.png" alt="Low-temperature tunnel diode oscillator circuit schematic">
-        <figcaption>Low-temperature oscillator circuit. The LC tank is coupled to the tunnel diode and bias network; the small AC-coupling capacitor became a critical part of the final working design.</figcaption>
-      </figure>
 
       <h2>The debugging breakthrough</h2>
       <p>Initially, the circuit appeared not to oscillate under normal operating conditions. A strange clue changed the direction of the debugging: touching the junction near the low-temperature bias network caused a ~23 MHz signal to become visible, while touching the same point with an electrically insulating object had no effect.</p>
       <div class="callout"><strong>The key diagnosis:</strong> the oscillator itself was already running, but the RF signal was being heavily attenuated before reaching the room-temperature electronics. Human-body capacitance was temporarily providing the missing AC bypass path.</div>
       <p>I added a 9.6 pF NP0 AC-coupling capacitor across the relevant path. Stable self-oscillation became immediately detectable without physical contact. This was the central engineering fix in the project and established that the oscillator design was fundamentally working.</p>
 
-      <h2>Measurement and analysis</h2>
-      <p>I characterized the tunnel diode I–V curve at room temperature and 77 K, calibrated the remote bias-voltage readout, and then measured oscillator behaviour across the negative-differential-resistance bias window. A custom Python script communicated with the Tektronix MDO3034 over VISA/USB, converted RF waveform data to dBm, identified the spectral peak, performed sub-bin parabolic interpolation, extracted the -3 dB linewidth, and saved time-stamped data and plots.</p>
-
-      <figure>
-        <img src="../images/research/tdo/spectrum-rt-vs-77k.png" alt="Overlaid RF spectra at room temperature and 77 K">
-        <figcaption>At 180 mV bias, cooling shifts the mixed-mode peak upward by about 97 kHz. The 14 MHz local oscillator means these displayed peaks correspond to TDO frequencies near 23.05 and 23.15 MHz.</figcaption>
-      </figure>
+      <h2>Measurement pipeline</h2>
+      <div class="signal-strip">
+        <div>TDO<br><strong>~23 MHz</strong></div><div class="arrow">→</div><div>Amplify & mix<br><strong>14 MHz LO</strong></div><div class="arrow">→</div><div>RF spectrum<br><strong>Python analysis</strong></div>
+      </div>
+      <p>I calibrated the remote bias-voltage readout and measured oscillator behaviour across the negative-differential-resistance bias window. A custom Python script communicated with the Tektronix MDO3034 over VISA/USB, converted RF waveform data to dBm, identified the spectral peak, performed sub-bin parabolic interpolation, extracted the −3 dB linewidth, and saved time-stamped data and plots.</p>
 
       <h2>Results</h2>
-      <p>Across the measured bias range, the oscillator frequency increased consistently on cooling from room temperature to 77 K. The shift ranged from roughly 78–106 kHz, with a mean near 97 kHz. The signal amplitude also increased by approximately 2–3 dBm at 77 K, while the linewidth generally narrowed.</p>
-      <p>The direction of the shift is physically consistent with reduced resistivity in the copper conductors at low temperature: decreased skin depth increases magnetic-flux exclusion, reduces effective inductance, and raises the resonant frequency.</p>
-
-      <figure>
-        <img src="../images/research/tdo/rt-vs-77k-comparison.png" alt="Frequency, amplitude, and linewidth versus tunnel diode bias at room temperature and 77 K">
-        <figcaption>Oscillator frequency, peak amplitude, and FWHM linewidth across the NDR bias window. The 77 K measurements show a robust upward frequency shift and generally improved signal quality.</figcaption>
-      </figure>
+      <p>The observed room-temperature self-oscillation frequency was approximately 23.1 MHz, close to the theoretical LC estimate of 23.8 MHz. Across the measured bias range, cooling from room temperature to 77 K produced a consistently positive frequency shift of roughly 78–106 kHz, with a mean near 97 kHz.</p>
+      <p>At 180 mV bias, the mixed-mode spectrum shifted from about 9.050 MHz at room temperature to about 9.147 MHz at 77 K. Adding the 14 MHz local-oscillator frequency places the underlying TDO peaks near 23.05 MHz and 23.15 MHz. The signal amplitude was also typically 2–3 dBm higher at 77 K, and the linewidth generally narrowed.</p>
+      <div class="callout"><strong>Physical interpretation:</strong> cooling reduces the resistivity and skin depth of the copper conductors. Stronger magnetic-flux exclusion lowers the effective inductance of the coil and raises its resonant frequency, matching the measured direction of the shift.</div>
 
       <h2>Engineering lessons and next steps</h2>
       <p>The project made the oscillator functional at cryogenic temperature, while also exposing the main limitations of the first-generation design. The three-tier stage is mechanically fragile, and the current FFT-based frequency readout is far less precise than the TDO itself can ultimately support.</p>
