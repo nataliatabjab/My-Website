@@ -1,57 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>Research – Natalia Tabja</title>
+  <meta name="description" content="A ~23 MHz cryogenic tunnel diode oscillator for contactless resistivity measurements.">
+  <title>Cryogenic Tunnel Diode Oscillator – Natalia Tabja</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../style_multi_light.css"> <!-- your theme -->
+  <link rel="stylesheet" href="../style_multi_light.css">
+  <style>
+    .case-study { max-width: 980px; margin: 0 auto; }
+    .case-study h1 { margin-bottom: .4rem; }
+    .case-study h2 { margin-top: 2.4rem; }
+    .lede { font-size: 1.08rem; line-height: 1.7; }
+    .meta { opacity: .78; margin-bottom: 1.8rem; }
+    .result-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin:1.5rem 0 2rem; }
+    .result { padding:1rem 1.1rem; border:1px solid var(--colour-border); border-radius:var(--radius); }
+    .result strong { display:block; font-size:1.4rem; margin-bottom:.3rem; }
+    figure { margin:2rem 0; }
+    figure img { width:100%; height:auto; border-radius:var(--radius); display:block; }
+    figcaption { font-size:.92rem; opacity:.78; margin-top:.65rem; line-height:1.5; }
+    .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; margin:1.4rem 0; }
+    .panel { padding:1.2rem 1.3rem; border:1px solid var(--colour-border); border-radius:var(--radius); }
+    .panel h3 { margin-top:0; }
+    .callout { padding:1.2rem 1.4rem; border-left:4px solid var(--colour-accent); background:rgba(0,210,106,.06); border-radius:8px; margin:1.5rem 0; }
+    .signal-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:.5rem; align-items:center; margin:1.5rem 0; }
+    .signal-strip div { text-align:center; padding:.9rem .45rem; border:1px solid var(--colour-border); border-radius:10px; font-size:.9rem; }
+    .arrow { border:none !important; font-size:1.3rem !important; padding:.4rem 0 !important; }
+    .back-link { display:inline-block; margin-bottom:1.2rem; }
+    @media (max-width:700px){ .signal-strip{grid-template-columns:1fr;} .arrow{transform:rotate(90deg);} }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
   <header class="navbar">
     <div class="container">
       <div class="logo"><a href="../index.html">Natalia <span class="accent">Tabja</span></a></div>
-<button class="menu-toggle" aria-label="Menu">☰</button>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
       <ul class="nav-links">
-        <li><a href="../index.html#coursework">Coursework</a></li>
         <li><a href="../index.html#projects">Projects</a></li>
         <li><a href="../index.html#work">Work</a></li>
         <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#creative">Creative</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </div>
   </header>
 
-<section class="section research-section" id="research">
-  <div class="container">
-    <h2>Research</h2>
+  <section class="section">
+    <div class="container case-study">
+      <a class="back-link" href="../index.html#research">← Back to research</a>
+      <h1>A ~23 MHz Tunnel Diode Oscillator for Contactless Resistivity Measurements</h1>
+      <p class="meta">University of Toronto · Julian Lab · 2025–2026</p>
+      <p class="lede">I designed, constructed, debugged, and characterized a first-generation tunnel diode oscillator (TDO) for cryogenic condensed-matter experiments. The instrument uses the negative differential resistance of a tunnel diode to sustain a high-frequency LC oscillation whose resonant frequency responds to changes in effective inductance. The long-term goal is contactless resistivity and superconductivity measurements on tiny samples at low temperatures and high pressures.</p>
 
-    <div class="research-card">
-      <h3>Development of a Cryogenic Tunnel Diode Oscillator for Superconducting Penetration-Depth Measurements</h3>
-      <p class="meta">Natalia Tabja • August 2025</p>
+      <div class="result-grid">
+        <div class="result"><strong>23.1 MHz</strong>stable room-temperature self-oscillation</div>
+        <div class="result"><strong>~97 kHz</strong>mean upward shift on cooling to 77 K</div>
+        <div class="result"><strong>77 K</strong>cryogenic characterization in liquid nitrogen</div>
+        <div class="result"><strong>Python</strong>automated RF-spectrum acquisition and analysis</div>
+      </div>
 
-      <h4>Motivation</h4>
-      <p>
-        Measurements of the London penetration depth λ<sub>L</sub> and contact-free resistivity 
-        provide key insights into the order parameter and pairing mechanisms of unconventional superconductors. 
-        Tunnel-diode oscillators (TDOs)—high-frequency LC circuits that self-resonate due to the negative 
-        differential resistance of a tunnel diode—offer unparalleled sensitivity to λ<sub>L</sub>(T).
-      </p>
+      <figure>
+        <img src="../images/research/desk-setup-min.JPG" alt="Tunnel diode oscillator laboratory setup">
+        <figcaption>The experimental setup used to build, debug, and characterize the cryogenic tunnel-diode oscillator.</figcaption>
+      </figure>
 
-      <h4>Plan</h4>
-      <p>
-        This project will adapt the current room-temperature TDO circuit into a stable low-temperature probe. 
-        The design will integrate thermometry, shielding, and temperature control so that the oscillator 
-        can be stabilized at 4.2 K. Measurements will be carried out with a coil embedded in a diamond-anvil 
-        cell gasket, enabling background frequency shift determination at 4–40 K.
-      </p>
+      <h2>Why build a TDO?</h2>
+      <p>Conventional four-probe resistivity measurements require electrical contacts on the sample. That becomes difficult for the sub-millimetre samples used in high-pressure condensed-matter experiments. A TDO avoids direct contacts: the sample is placed inside an inductor coil, where the RF magnetic field induces eddy currents. Changes in sample conductivity alter the effective inductance of the coil and therefore shift the oscillator frequency.</p>
+      <p>At a superconducting transition, the electromagnetic penetration depth changes dramatically, making the resonant frequency an especially sensitive probe of superconductivity.</p>
+
+      <h2>What I built</h2>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Low-temperature oscillator</h3>
+          <p>A hand-wound ~0.36 µH copper coil and 124 pF tank capacitance form the LC resonator. The tunnel diode supplies effective negative resistance to compensate circuit losses and sustain oscillation.</p>
+        </div>
+        <div class="panel">
+          <h3>Cryogenic mechanical stage</h3>
+          <p>The components were mounted on a three-tier copper assembly: the top tier carried the tunnel diode and bias network, the middle tier provided electromagnetic shielding, and the lowest tier carried the LC tank.</p>
+        </div>
+        <div class="panel">
+          <h3>Room-temperature signal chain</h3>
+          <p>The returning RF signal was amplified, mixed with a 14 MHz local oscillator, band-pass filtered, and measured on a Tektronix MDO3034 mixed-domain oscilloscope.</p>
+        </div>
+        <div class="panel">
+          <h3>Tunnel-diode characterization</h3>
+          <p>I measured the I–V characteristic at room temperature and 77 K and extracted negative differential resistances of roughly −307 Ω and −273 Ω, respectively.</p>
+        </div>
+      </div>
+
+      <h2>The debugging breakthrough</h2>
+      <p>Initially, the circuit appeared not to oscillate under normal operating conditions. A strange clue changed the direction of the debugging: touching the junction near the low-temperature bias network caused a ~23 MHz signal to become visible, while touching the same point with an electrically insulating object had no effect.</p>
+      <div class="callout"><strong>The key diagnosis:</strong> the oscillator itself was already running, but the RF signal was being heavily attenuated before reaching the room-temperature electronics. Human-body capacitance was temporarily providing the missing AC bypass path.</div>
+      <p>I added a 9.6 pF NP0 AC-coupling capacitor across the relevant path. Stable self-oscillation became immediately detectable without physical contact. This was the central engineering fix in the project and established that the oscillator design was fundamentally working.</p>
+
+      <h2>Measurement pipeline</h2>
+      <div class="signal-strip">
+        <div>TDO<br><strong>~23 MHz</strong></div><div class="arrow">→</div><div>Amplify & mix<br><strong>14 MHz LO</strong></div><div class="arrow">→</div><div>RF spectrum<br><strong>Python analysis</strong></div>
+      </div>
+      <p>I calibrated the remote bias-voltage readout and measured oscillator behaviour across the negative-differential-resistance bias window. A custom Python script communicated with the Tektronix MDO3034 over VISA/USB, converted RF waveform data to dBm, identified the spectral peak, performed sub-bin parabolic interpolation, extracted the −3 dB linewidth, and saved time-stamped data and plots.</p>
+
+      <h2>Results</h2>
+      <p>The observed room-temperature self-oscillation frequency was approximately 23.1 MHz, close to the theoretical LC estimate of 23.8 MHz. Across the measured bias range, cooling from room temperature to 77 K produced a consistently positive frequency shift of roughly 78–106 kHz, with a mean near 97 kHz.</p>
+      <p>At 180 mV bias, the mixed-mode spectrum shifted from about 9.050 MHz at room temperature to about 9.147 MHz at 77 K. Adding the 14 MHz local-oscillator frequency places the underlying TDO peaks near 23.05 MHz and 23.15 MHz. The signal amplitude was also typically 2–3 dBm higher at 77 K, and the linewidth generally narrowed.</p>
+      <div class="callout"><strong>Physical interpretation:</strong> cooling reduces the resistivity and skin depth of the copper conductors. Stronger magnetic-flux exclusion lowers the effective inductance of the coil and raises its resonant frequency, matching the measured direction of the shift.</div>
+
+      <h2>Engineering lessons and next steps</h2>
+      <p>The project made the oscillator functional at cryogenic temperature, while also exposing the main limitations of the first-generation design. The three-tier stage is mechanically fragile, and the current FFT-based frequency readout is far less precise than the TDO itself can ultimately support.</p>
+      <p>Recommended next steps are to increase the AC-coupling capacitance, integrate a precision frequency counter for ppm-level resolution and automated sweeps, characterize long-term stability with Allan deviation, and rebuild the low-temperature assembly using a mechanically robust monolithic or etched-board design before moving toward measurements below 4 K.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <footer class="footer"><div class="container"><p>&copy; 2025 Natalia Tabja. All rights reserved.</p></div></footer>
+  <footer class="footer"><div class="container"><p>&copy; 2026 Natalia Tabja. All rights reserved.</p></div></footer>
   <script src="../script.js" defer></script>
 </body>
 </html>
