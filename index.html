@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>Natalia Tabja – Portfolio</title>
+  <meta name="description" content="Natalia Tabja — applied AI, scientific computing, and physics portfolio.">
+  <title>Natalia Tabja – Portfolio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style_multi_light.css">
-
 </head>
-<script src="../script.js" defer></script>  <!-- use ./script.js on the home page -->
 <body>
-  <!-- Navigation bar -->
   <nav class="navbar">
     <div class="container">
       <h1 class="logo"><span class="accent">Natalia</span> Tabja</h1>
-<button class="menu-toggle" aria-label="Menu">☰</button>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#coursework">Coursework</a></li>
@@ -27,47 +25,38 @@
     </div>
   </nav>
 
-  <!-- Hero section with animated grid canvas -->
   <section id="hero" class="hero">
     <canvas id="gridCanvas"></canvas>
     <div class="hero-content">
-      <h2 class="hero-title">Data Scientist & Physicist</h2>
-      <p class="hero-subtitle">Blending Physics, Mathematics & Computing into Interactive Insights</p>
+      <h2 class="hero-title">Applied AI · Scientific Computing · Physics</h2>
+      <p class="hero-subtitle">Building intelligent systems and experimental tools across cloud AI, machine learning, and condensed-matter physics.</p>
     </div>
   </section>
 
-  <!-- About section -->
   <section id="about" class="section">
     <div class="container">
       <h2>About Me</h2>
       <p>
-        I'm Natalia, a Data Scientist Intern @ IBM, currently working on the AI & Automation team to help build assets and accelerators in the Agentic AI and GenAI domains. I am also studying Physics & Computer Science at the University of Toronto with a focus on experimental condensed-matter physics and computational methods. My work blends mathematics, physics, and programming. This portfolio highlights my coursework, research, and projects.
+        I'm Natalia, a Physics and Computer Science graduate from the University of Toronto with experience spanning applied AI, scientific programming, and experimental condensed-matter physics. At IBM AI & Automation, I worked on multi-agent orchestration across cloud platforms and on agentic workflows for the software-development lifecycle. In the Julian Lab at U of T, I designed, built, debugged, and characterized a cryogenic tunnel-diode oscillator for contactless resistivity measurements. My work is driven by a common theme: using computation to make complex technical systems useful, measurable, and easier to understand.
       </p>
 
-      <!-- Chatbot embed -->
       <h3 style="margin-top: 2rem;">Chat with Me</h3>
-      <p>
-        Have questions about my background, research, or projects? Ask me directly here.
-      </p>
-
+      <p>Have questions about my background, research, or projects? Ask me directly here.</p>
       <iframe
         src="https://nataliatabja-career-conversations.hf.space"
         width="100%"
         height="650"
         style="border:none; border-radius:12px;"
         loading="lazy"
+        title="Career conversations chatbot"
       ></iframe>
     </div>
   </section>
 
-
-  <!-- Coursework section -->
   <section id="coursework" class="section">
     <div class="container">
       <h2>Coursework</h2>
-      <div id="courses-list" class="courses-grid">
-        <!-- Course cards will be injected here by script.js -->
-      </div>
+      <div id="courses-list" class="courses-grid"></div>
       <h3>Courses by category</h3>
       <div class="chart-container">
         <svg id="courseChart" width="600" height="300"></svg>
@@ -75,44 +64,47 @@
     </div>
   </section>
 
-  <!-- Projects section -->
   <section id="projects" class="section">
     <div class="container">
       <h2>Projects</h2>
-      <div id="projects-list" class="projects-grid">
-        <!-- Project cards will be injected here by script.js -->
-      </div>
+      <div id="projects-list" class="projects-grid"></div>
     </div>
   </section>
 
-  <!-- Work history section -->
   <section id="work" class="section">
     <div class="container">
       <h2>Work History</h2>
-      <div id="work-list" class="work-grid">
-        <!-- Work history cards will be injected here by script.js -->
+      <div class="work-grid" style="margin-bottom:1.25rem;">
+        <a class="card-link" href="work/ibm-ai-automation.html">
+          <div class="card">
+            <h3>Data Scientist Intern @ IBM AI & Automation</h3>
+            <p>January 2026 – August 2026</p>
+            <p>Worked on cross-cloud multi-agent orchestration and agentic SDLC workflows, including Azure AI Foundry, AWS Bedrock AgentCore, LangGraph, authentication, deployment, and coding-agent integrations.</p>
+            <div class="tags">
+              <span class="tag">Agentic AI</span><span class="tag">Python</span><span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">LangGraph</span>
+            </div>
+          </div>
+        </a>
       </div>
+      <div id="work-list" class="work-grid"></div>
     </div>
   </section>
 
-  <!-- Research section -->
   <section id="research" class="section">
     <div class="container">
       <h2>Research</h2>
-      <p>I will be starting research in condensed matter physics in Fall 2025. Stay tuned for updates and publications.</p>
+      <p>Experimental condensed-matter research in Professor Stephen Julian's laboratory at the University of Toronto, focused on cryogenic instrumentation for contactless measurements of superconducting materials.</p>
 
       <div class="research-preview">
-        <h3><a href="research/tdo.html">Cryogenic Tunnel Diode Oscillator</a></h3>
-        <p>Development of a low-temperature TDO for superconducting penetration-depth measurements.</p>
-
+        <h3><a href="research/tdo.html">A ~23 MHz Tunnel Diode Oscillator for Cryogenic Resistivity Measurements</a></h3>
+        <p>Designed, constructed, and characterized a first-generation cryogenic TDO. The system achieved stable self-oscillation near 23.1 MHz and showed an average ~97 kHz upward frequency shift on cooling to 77 K.</p>
         <div class="media">
-          <img src="images/research/desk-setup-min.JPG" alt="Desk setup" loading="lazy">
+          <img src="images/research/tdo/oscilloscope.jpeg" alt="Measured tunnel-diode oscillator signal on a Tektronix mixed-domain oscilloscope" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Creative Work section -->
   <section id="creative" class="section">
     <div class="container">
       <h2>Creative Work</h2>
@@ -121,19 +113,15 @@
     </div>
   </section>
 
-  <!-- Contact section -->
   <section id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
-      <p>Feel free to reach out via <a href="mailto:nataliatabjab@gmail.com">nataliatabjab@gmail.com</a> or connect with me on LinkedIn.</p>
+      <p>Feel free to reach out via <a href="mailto:nataliatabjab@gmail.com">nataliatabjab@gmail.com</a> or connect with me on LinkedIn.</p>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Natalia Tabja. All rights reserved.</p>
-    </div>
+    <div class="container"><p>&copy; 2026 Natalia Tabja. All rights reserved.</p></div>
   </footer>
 
   <script src="script.js"></script>
